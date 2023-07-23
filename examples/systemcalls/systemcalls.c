@@ -59,7 +59,7 @@ bool do_exec(int count, ...)
      pid_for_exec = fork();
      
      
-     if (pid_for_exec != -1)
+     if (pid_for_exec == 0)
      {
      	execResult = execv(command[0], command);
      	exit(-1);
