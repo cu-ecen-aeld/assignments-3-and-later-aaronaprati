@@ -164,10 +164,10 @@ cp ${FINDER_APP_DIR}/writer.sh ${OUTDIR}/rootfs/home
 cp ${FINDER_APP_DIR}/finder*.sh ${OUTDIR}/rootfs/home
 
 #cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/conf/username.txt ${OUTDIR}/rootfs/home/conf
-cp ${FINDER_APP_DIR}/conf/username.txt ${OUTDIR}/rootfs/home/conf
+cp ${FINDER_APP_DIR}/../conf/username.txt ${OUTDIR}/rootfs/home/conf
 
 #cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/conf/assignment.txt ${OUTDIR}/rootfs/home/conf
-cp ${FINDER_APP_DIR}/conf/assignment.txt ${OUTDIR}/rootfs/home/conf
+cp ${FINDER_APP_DIR}/../conf/assignment.txt ${OUTDIR}/rootfs/home/conf
 
 #cp /home/aaron/Desktop/assignment-3-part-2-aaronaprati/finder-app/autorun-qemu.sh ${OUTDIR}/rootfs/home
 cp ${FINDER_APP_DIR}/autorun-qemu.sh ${OUTDIR}/rootfs/home
