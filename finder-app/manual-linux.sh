@@ -175,7 +175,7 @@ cp ${FINDER_APP_DIR}/autorun-qemu.sh ${OUTDIR}/rootfs/home
 echo "Done copying finder stuff"
 # TODO: Chown the root directory
 #cd ${SYSROOT}/rootfs
-sudo chown -R root:root ${SYSROOT}/rootfs
+sudo chown -R root:root ${OUTDIR}/rootfs
 
 echo "Done with owner thing"
 
