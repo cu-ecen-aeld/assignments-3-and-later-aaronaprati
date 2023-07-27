@@ -5,6 +5,7 @@
 set -e
 set -u
 
+Finder_APP=$(realpath $(dirname $0))
 OUTDIR=/tmp/aeld
 KERNEL_REPO=git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
 #KERNEL_REPO=git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
@@ -140,7 +141,8 @@ echo "Making device nodes a success"
 
 # TODO: Clean and build the writer utility
 echo "Making writer utility"
-cd /home/aaron/Desktop/assignment-3-part-2-aaronaprati/finder-app
+#cd /home/aaron/Desktop/assignment-3-part-2-aaronaprati/finder-app
+cd ${FINDER_APP_DIR}
 make clean CROSS_COMPILE=${CROSS_COMPILE}
 make CROSS_COMPILE=${CROSS_COMPILE}
 echo "Made writer utility"
@@ -155,15 +157,21 @@ mkdir -p ${OUTDIR}/rootfs/home/conf
 #cp -R /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/conf ${OUTDIR}/rootfs/home/conf
 echo "Copying finder-app/conf lets see if it works" 
 
-cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/writer.sh ${OUTDIR}/rootfs/home
+#cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/writer.sh ${OUTDIR}/rootfs/home
+cp ${FINDER_APP_DIR}/writer.sh ${OUTDIR}/rootfs/home
 
-cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/finder*.sh ${OUTDIR}/rootfs/home
+#cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/finder*.sh ${OUTDIR}/rootfs/home
+cp ${FINDER_APP_DIR}/finder*.sh ${OUTDIR}/rootfs/home
 
-cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/conf/username.txt ${OUTDIR}/rootfs/home/conf
+#cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/conf/username.txt ${OUTDIR}/rootfs/home/conf
+cp ${FINDER_APP_DIR}/conf/username.txt ${OUTDIR}/rootfs/home/conf
 
-cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/conf/assignment.txt ${OUTDIR}/rootfs/home/conf
+#cp /home/aaron/Desktop/assignment-2-aaronaprati/finder-app/conf/assignment.txt ${OUTDIR}/rootfs/home/conf
+cp ${FINDER_APP_DIR}/conf/assignment.txt ${OUTDIR}/rootfs/home/conf
 
-cp /home/aaron/Desktop/assignment-3-part-2-aaronaprati/finder-app/autorun-qemu.sh ${OUTDIR}/rootfs/home
+#cp /home/aaron/Desktop/assignment-3-part-2-aaronaprati/finder-app/autorun-qemu.sh ${OUTDIR}/rootfs/home
+cp ${FINDER_APP_DIR}/autorun-qemu.sh ${OUTDIR}/rootfs/home
+
 echo "Done copying finder stuff"
 # TODO: Chown the root directory
 #cd ${SYSROOT}/rootfs
