@@ -11,23 +11,56 @@
 void* threadfunc(void* thread_param)
 {
 
-    // TODO: wait, obtain mutex, wait, release mutex as described by thread_data structure
-    // hint: use a cast like the one below to obtain thread arguments from your parameter
-    //struct thread_data* thread_func_args = (struct thread_data *) thread_param;
+	struct thread_data* thread_func_args = (struct thread_data *) thread_param;
+	
+	int result = 0;
+	int second_result = 0;
+	thread_func_args->thread_complete_success =false;
+	
+	usleep((thread_func_args->wait_to_obtain_ms));
+	//mutex_lock_result = pthread_mutex_lock(thread_func_args->mutex);
+	result = pthread_mutex_lock(thread_func_args->mutex);
+	
+	if (result == 0)
+	{
+		usleep((thread_func_args->wait_to_release_ms));
+		second_result = pthread_mutex_unlock(thread_func_args->mutex);
+		if (second_result == 0)
+		{
+		  thread_func_args->thread_complete_success =true;
+		}
+	}
     return thread_param;
 }
 
 
 bool start_thread_obtaining_mutex(pthread_t *thread, pthread_mutex_t *mutex,int wait_to_obtain_ms, int wait_to_release_ms)
 {
-    /**
-     * TODO: allocate memory for thread_data, setup mutex and wait arguments, pass thread_data to created thread
-     * using threadfunc() as entry point.
-     *
-     * return true if successful.
-     *
-     * See implementation details in threading.h file comment block
-     */
-    return false;
+	//pthread_t p1;
+	//pthead_mutex_t *mutex;
+	//int wait_to_obtain_ms;
+	//int wait_to_release_ms;
+	
+	struct thread_data* data = (struct thread_data*)malloc(sizeof(struct thread_data));
+	
+	data->mutex = mutex;
+	data->wait_to_obtain_ms = wait_to_obtain_ms;
+	data->wait_to_release_ms = wait_to_release_ms;
+	data->p1 = thread;
+	
+	int success = 0;
+	
+	success = pthread_create(thread, NULL, threadfunc, data);
+	
+	if (success != 0)
+	{
+		//free(data);
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
 }
 
