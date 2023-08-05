@@ -2,6 +2,8 @@
 CROSS_COMPILE=aarch64-none-linux-gnu-
 #CROSS_COMPILE = ""
 
+all: writer
+
 writer: writer.o
 	@if [ -z "$(CROSS_COMPILE)" ];\
 	then\
