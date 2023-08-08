@@ -95,12 +95,19 @@ int main(int argc, char *argv[]) {
         daemonize();
     }
 
+
     // Create a socket
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
         perror("socket");
         exit(EXIT_FAILURE);
     }
+
+	int enable = 1;
+	if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0) {
+    		perror("setsockopt(SO_REUSEADDR) failed");
+	}
+
 
     // Set up the server address structure
     memset(&server_addr, 0, sizeof(server_addr));
@@ -138,7 +145,7 @@ int main(int argc, char *argv[]) {
             perror("accept");
             continue;
         }
-
+	
         // Log the accepted connection to syslog with client IP address
         inet_ntop(AF_INET, &(client_addr.sin_addr), client_ip, INET_ADDRSTRLEN);
         syslog(LOG_INFO, "Accepted connection from %s", client_ip);
@@ -205,4 +212,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
