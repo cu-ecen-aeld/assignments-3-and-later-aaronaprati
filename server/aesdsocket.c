@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    printf("Listening for incoming connections...\n");
+    //printf("Listening for incoming connections...\n");
 
     socklen_t client_addr_len = sizeof(client_addr);
     char client_ip[INET_ADDRSTRLEN];
@@ -157,7 +157,7 @@ int main(int argc, char *argv[]) {
         ssize_t bytes_received;
 	//printf("Available heap: %lu\n\r",available_heap);
         while ((bytes_received = recv(client_sock, buffer, BUFFER_SIZE*sizeof(char) - 1, 0)) > 0) {
-            printf("Available heap: %lu\n\r",available_heap);
+            //printf("Available heap: %lu\n\r",available_heap);
             if ((total_received > available_heap)) {
                 syslog(LOG_INFO, "Packet too large for available heap, closing connection");
                 printf("Packet too large for available heap, closing connection");
@@ -175,7 +175,7 @@ int main(int argc, char *argv[]) {
             //write(file_fd, buffer, bytes_received);
         }
         write(file_fd, buffer, bytes_received);
-        printf("This is what we recieved: \n\r%s\n\r",buffer);
+        //printf("This is what we recieved: \n\r%s\n\r",buffer);
 	/*
         bytes_received = recv(client_sock, buffer, sizeof(buffer), 0);
 	write(file_fd, buffer, bytes_received);
