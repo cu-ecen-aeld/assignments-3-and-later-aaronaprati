@@ -1,0 +1,217 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <signal.h>
+#include <syslog.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <fcntl.h>
+#include <arpa/inet.h>
+#include <getopt.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+#define PORT 9000
+#define MAX_CLIENTS 10
+#define BUFFER_SIZE 1024
+
+int server_fd = 0;  // Global variable to store server socket
+
+void daemonize() {
+    // Fork the process
+    pid_t pid = fork();
+    if (pid < 0) {
+        perror("Fork failed");
+        exit(1);
+    }
+
+    // If we got a good PID, then we can exit the parent process.
+    if (pid > 0) {
+        exit(0);
+    }
+
+    // Change the file mode mask
+    umask(0);
+
+    // Create a new session for the child process
+    if (setsid() < 0) {
+        perror("setsid failed");
+        exit(1);
+    }
+
+    // Change the current working directory
+    if (chdir("/") < 0) {
+        perror("chdir failed");
+        exit(1);
+    }
+
+    // Close standard file descriptors
+    close(STDIN_FILENO);
+    close(STDOUT_FILENO);
+    close(STDERR_FILENO);
+}
+
+
+void sig_handler(int signo) {
+    if (signo == SIGINT || signo == SIGTERM) {
+    	 printf("Kill signal triggered \n\r");
+        syslog(LOG_INFO, "Caught signal, exiting/n");
+        /*if (server_fd != -1) {
+            close(server_fd);
+        }*/
+        //unlink("/var/tmp/aesdsocketdata");
+        
+        remove("/var/tmp/aesdsocketdata");
+        closelog();
+        exit(0);
+    }
+}
+
+
+int main(int argc, char *argv[]) {
+    int opt;
+    int daemon_mode = 0;
+
+    while ((opt = getopt(argc, argv, "d")) != -1) {
+        switch (opt) {
+            case 'd':
+                daemon_mode = 1;
+                break;
+            default:
+                fprintf(stderr, "Usage: %s [-d]\n", argv[0]);
+                exit(EXIT_FAILURE);
+        }
+    }
+
+    if (daemon_mode) {
+        daemonize();
+    }
+	signal(SIGINT, sig_handler);
+	signal(SIGTERM, sig_handler);
+/*
+    struct sigaction sa;
+    sa.sa_handler = sig_handler;
+    sa.sa_flags = 0;
+    sigemptyset(&sa.sa_mask);
+
+    if (sigaction(SIGINT, &sa, NULL) == -1 || sigaction(SIGTERM, &sa, NULL) == -1) {
+        perror("Error setting signal handler");
+        return -1;
+    }
+*/
+    char *ptr = NULL;
+    int new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+    memset(&address, 0, sizeof(struct sockaddr_in));
+    address.sin_family = AF_INET;
+    address.sin_port = htons(PORT);
+    address.sin_addr.s_addr = INADDR_ANY;
+    //char buffer[BUFFER_SIZE];
+    char *buffer = (char*)malloc(BUFFER_SIZE * sizeof(char));
+    memset(buffer, 0, BUFFER_SIZE*sizeof(char));
+    //char test_buffer[BUFFER_SIZE];
+    printf("Declaring memory structures\n\r");
+
+    openlog("aesd_socket_server", LOG_PID | LOG_CONS, LOG_USER);
+    printf("aesd_socket_server\n\r");
+
+    // Create socket
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == -1) {
+        perror("Socket creation failed");
+        printf("Socket creation failed\n\r");
+        return -1;
+    }
+    printf("Created socket\n\r");
+
+    // Bind the socket
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        perror("Bind failed");
+        printf("Bind failed\n\r");
+        return -1;
+    }
+    printf("bound socket\n\r");
+    // Listen for incoming connections
+    if (listen(server_fd, MAX_CLIENTS) < 0) {
+        perror("Listen failed");
+        printf("Listen failed\n\r");
+        return -1;
+    }
+
+    while (1) {
+        // Accept a new connection
+        if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+            perror("Accept failed");
+            printf("Accept failed\n\r");
+            return -1;
+        }
+
+        // Log accepted connection
+        char client_ip[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &address.sin_addr, client_ip, INET_ADDRSTRLEN);
+        syslog(LOG_INFO, "Accepted connection from %s", client_ip);
+        printf("Accepted connection from %s\n\r", client_ip);
+
+        // Receive and process data
+        int file_fd = open("/var/tmp/aesdsocketdata", O_RDWR | O_CREAT | O_APPEND, 0644);
+        if (file_fd == -1) {
+            perror("File open failed");
+            printf("File open failed\n\r");
+            return -1;
+        }
+
+        ssize_t bytes_received;
+		
+		bytes_received = recv(new_socket, buffer, sizeof(buffer) - 1, 0);
+        	write(file_fd, buffer, bytes_received);
+        	printf("Here is what we read before sending  %s\n\r",buffer);
+        	ptr = strchr(buffer, '\n');
+        	if (ptr != NULL)
+        	{	
+        	// Check if the total length of the packet exceeds available heap size
+        	/*
+            if (lseek(file_fd, 0, SEEK_END) > (BUFFER_SIZE*sizeof(char))){
+              //if (bytes_received > BUFFER_SIZE) {
+                	syslog(LOG_ERR, "Total packet length exceeds available heap size");*/
+            		//memset(buffer, 0, BUFFER_SIZE*sizeof(char));
+        		//close(file_fd);
+        }
+     
+	//printf("Here is what we read after sending\n\r%s\n\r",buffer);
+        close(file_fd);
+        //}
+        //while(1){
+	//printf("Here is what we recieved from the socket\n\r%s\n\r",buffer);
+        // Rewind the file to the beginning
+        //lseek(file_fd, 0, SEEK_SET);
+        /*
+        ssize_t Test_byte_read;
+        Test_byte_read = read(file_fd, test_buffer, sizeof(test_buffer));
+        printf("Here is what we read before sending\n\r%s\n\r",test_buffer);
+        */
+        printf("Here is what we read after sending\n\r%s\n\r",buffer);
+	lseek(file_fd, 0, SEEK_SET);
+        // Send back the content of the file
+        ssize_t bytes_read;
+        while ((bytes_read = read(file_fd, buffer, sizeof(buffer))) > 0) {
+            //send(new_socket, buffer, bytes_read, 0);
+        }
+        send(new_socket, buffer, bytes_read, 0);
+     	memset(buffer, 0, BUFFER_SIZE*sizeof(char));
+	//printf("Here is what we read after sending\n\r%s\n\r",buffer);
+        //close(file_fd);
+
+        // Log closed connection
+        syslog(LOG_INFO, "Closed connection from %s", client_ip);
+        printf("Closed connection from %s\n\r", client_ip);
+        // Close the connection
+        close(new_socket);
+        printf("Closing socket\n\r");
+    }
+
+    return 0;
+}
+
