@@ -3,7 +3,7 @@
 # Function to handle the start
 start() {
   echo "Starting aesdsocket in daemon mode..."
-  ./aesdsocket -d
+  ./usr/bin/aesdsocket -d
 }
 
 # Function to handle the stop
