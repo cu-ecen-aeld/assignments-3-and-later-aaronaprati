@@ -79,7 +79,7 @@ void cleanup_threads(pthread_t timer_thread_id) {
     while (info != NULL) {
         tmp = SLIST_NEXT(info, entries);
         if (info->thread_complete_flag) {
-            //printf("Removing thread %lu\n", info->thread_id);
+            printf("Removing thread %lu\n", info->thread_id);
             close(info->client_socket);
             pthread_join(info->thread_id, NULL);
             SLIST_REMOVE(&thread_list, info, ThreadInfo, entries);
@@ -105,7 +105,7 @@ void add_timestamp_to_file(FILE *file) {
     pthread_mutex_lock(&file_mutex);
     fprintf(file, "%s\n", timestamp);
     pthread_mutex_unlock(&file_mutex);
-    //printf("%s\n", timestamp);
+    printf("%s\n", timestamp);
 
   
 }
@@ -114,7 +114,7 @@ void add_timestamp_to_file(FILE *file) {
 //void *timer_thread_function(void *arg) {
 void *timer_thread_function(void *arg) {
     FILE* file = (FILE *)arg;
-    //printf("Timer thread is starting ... \n");
+    printf("Timer thread is starting ... \n");
 
     while(1) {
         add_timestamp_to_file(file);
@@ -190,8 +190,8 @@ void *handle_client_connection(void *arg) {
             break;
         }
     }
-    //printf("Buffer :%s \n not in buffer now buffer\n", buffer);
-    //printf("Bytes read :%zu \n", bytes_read);
+    printf("Buffer :%s \n not in buffer now buffer\n", buffer);
+    printf("Bytes read :%zu \n", bytes_read);
     pthread_mutex_unlock(&file_mutex);
 
     //fclose(file_ptr);
