@@ -84,6 +84,7 @@ void cleanup_threads(pthread_t timer_thread_id) {
             pthread_join(info->thread_id, NULL);
             SLIST_REMOVE(&thread_list, info, ThreadInfo, entries);
             free(info);
+            info = NULL;
         }
         info = tmp;
     }
@@ -162,6 +163,7 @@ void *handle_client_connection(void *arg) {
             fclose(file_ptr);
             close(client_sock);
             free(buffer);
+            buffer = NULL;
             return NULL;
         }
 
@@ -186,7 +188,9 @@ void *handle_client_connection(void *arg) {
             perror("send");
             pthread_mutex_unlock(&file_mutex);
             free(buffer);
+            buffer = NULL;
             free(file_contents);
+            file_contents = NULL;
             break;
         }
     }
@@ -199,8 +203,10 @@ void *handle_client_connection(void *arg) {
     // Log closed connection to syslog
     syslog(LOG_INFO, "Closed connection from %s", client_ip);
     close(client_sock);
-    free(file_contents);
     free(buffer);
+    buffer = NULL;
+    free(file_contents);
+    file_contents = NULL;
     info->thread_complete_flag = 1;
     pthread_exit(NULL);
 }
