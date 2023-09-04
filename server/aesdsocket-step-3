@@ -20,8 +20,8 @@
 
 #define BUFFER_SIZE 1000000
 #define PORT 9000
-int sockfd = 0;
-FILE *file_ptr = NULL;
+int sockfd;
+FILE *file_ptr;
 
 struct ThreadInfo {
     pthread_t thread_id;
@@ -111,7 +111,6 @@ void add_timestamp_to_file(FILE *file) {
 }
 
 // Thread that writes timestamp to file every 10 seconds
-//void *timer_thread_function(void *arg) {
 void *timer_thread_function(void *arg) {
     FILE* file = (FILE *)arg;
     printf("Timer thread is starting ... \n");
@@ -121,7 +120,6 @@ void *timer_thread_function(void *arg) {
         sleep(10);
     }
     return NULL;
-
 }
 
 void *handle_client_connection(void *arg) {
@@ -129,20 +127,16 @@ void *handle_client_connection(void *arg) {
     int client_sock = info->client_socket;
     struct sockaddr_in client_addr= info->client_thread_addr;
     //socklen_t sin_thread_size_local = info->sin_thread_size;
+
     char client_ip[INET_ADDRSTRLEN];
-    
-    pthread_mutex_lock(&file_mutex);
     char *buffer = (char*)malloc(BUFFER_SIZE * sizeof(char));
-    memset(buffer, 0, BUFFER_SIZE*sizeof(char));
     size_t available_heap = get_available_heap_size();
-    pthread_mutex_unlock(&file_mutex);
-    
+
     // Log the accepted connection to syslog with client IP address
     inet_ntop(AF_INET, &(client_addr.sin_addr), client_ip, INET_ADDRSTRLEN);
     syslog(LOG_INFO, "Accepted connection from %s", client_ip);
 
     // Receive data and append to file
-    /*
     file_ptr = fopen("/var/tmp/aesdsocketdata", "a");
     if (file_ptr == NULL) {
         perror("fopen");
@@ -150,19 +144,18 @@ void *handle_client_connection(void *arg) {
         free(buffer);
         return;
     }
-	*/
+
     ssize_t total_received = 0;
     ssize_t bytes_received;
     char *ptr = NULL;
-    pthread_mutex_lock(&file_mutex);
-    
+
     while ((bytes_received = recv(client_sock, buffer, BUFFER_SIZE - 1, 0)) > 0) {
         if ((total_received > available_heap)) {
             syslog(LOG_INFO, "Packet too large for available heap, closing connection");
             fclose(file_ptr);
             close(client_sock);
             free(buffer);
-            return NULL;
+            return;
         }
 
         ptr = strchr(buffer, '\n');
@@ -172,34 +165,34 @@ void *handle_client_connection(void *arg) {
         total_received += bytes_received;
     }
     fprintf(file_ptr, "%s", buffer);
-    fseek(file_ptr, 0, SEEK_END);
-    long file_size = ftell(file_ptr);
-    fseek(file_ptr, 0, SEEK_SET);
-    // Allocate memory for the file contents (+1 for null-terminator)
-    char* file_contents = (char*)malloc(file_size + 1);
+    fclose(file_ptr);
 
+    // Echo back the received data to the client
+    file_ptr = fopen("/var/tmp/aesdsocketdata", "r");
+    if (file_ptr == NULL) {
+        perror("fopen");
+        close(client_sock);
+        free(buffer);
+        return;
+    }
+    pthread_mutex_lock(&file_mutex);
     size_t bytes_read;
-    //while ((bytes_read = fread(buffer, 1, sizeof(buffer), file_ptr)) > 0) {
-    while ((bytes_read = fread(file_contents, 1, file_size, file_ptr)) > 0) {
-        ssize_t bytes_sent = send(client_sock, file_contents, bytes_read, 0);
+    while ((bytes_read = fread(buffer, 1, sizeof(buffer), file_ptr)) > 0) {
+        ssize_t bytes_sent = send(client_sock, buffer, bytes_read, 0);
         if (bytes_sent == -1) {
             perror("send");
             pthread_mutex_unlock(&file_mutex);
             free(buffer);
-            free(file_contents);
             break;
         }
     }
-    printf("Buffer :%s \n not in buffer now buffer\n", buffer);
-    printf("Bytes read :%zu \n", bytes_read);
     pthread_mutex_unlock(&file_mutex);
 
-    //fclose(file_ptr);
+    fclose(file_ptr);
 
     // Log closed connection to syslog
     syslog(LOG_INFO, "Closed connection from %s", client_ip);
     close(client_sock);
-    free(file_contents);
     free(buffer);
     info->thread_complete_flag = 1;
     pthread_exit(NULL);
@@ -222,7 +215,11 @@ int main(int argc, char *argv[]) {
     openlog("aesdsocket_server", LOG_CONS | LOG_PID, LOG_USER);
 
     bool daemon_mode = false;
-
+    /*
+    char *buffer;
+    buffer = (char*)malloc(BUFFER_SIZE*sizeof(char));
+    memset(buffer, 0, BUFFER_SIZE*sizeof(char));
+    size_t available_heap = get_available_heap_size();*/
     char *ptr = NULL;
     
     // Parse command-line arguments
@@ -285,14 +282,6 @@ int main(int argc, char *argv[]) {
     // Set up the signal handler for SIGINT (Ctrl+C) and SIGTERM
     signal(SIGINT, sigint_handler);
     signal(SIGTERM, sigint_handler);
-    
-       // Receive data and append to file
-    file_ptr = fopen("/var/tmp/aesdsocketdata", "a+");
-    if (file_ptr == NULL) {
-        perror("fopen");
-        close(client_sock);
-        return -1;
-    }
     
     pthread_t timer_thread;
     if(pthread_create(&timer_thread, NULL, timer_thread_function, file_ptr)) {

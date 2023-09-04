@@ -9,9 +9,9 @@ all: aesdsocket
 aesdsocket: aesdsocket.o
 	@if [ -z "$(CROSS_COMPILE)" ]; \
 	then \
-		$(CC) -o aesdsocket aesdsocket.o; \
+		$(CC) -o aesdsocket aesdsocket.o -lpthread; \
 	else \
-		"$(CROSS_COMPILE)$(CC)" -o aesdsocket aesdsocket.o; \
+		"$(CROSS_COMPILE)$(CC)" -o aesdsocket aesdsocket.o -lpthread; \
 	fi
 
 aesdsocket.o: aesdsocket.c
