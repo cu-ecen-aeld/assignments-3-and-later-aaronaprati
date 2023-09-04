@@ -1,6 +1,9 @@
 CROSS_COMPILE ?=
 #CROSS_COMPILE=aarch64-none-linux-gnu-
-CC=gcc
+CC ?= gcc
+OBJFILES ?= aesdsocket.o
+CFLAGS ?= -g -Wall -Werror
+LDFLAGS ?= -pthread
 
 default: all
 
@@ -9,9 +12,9 @@ all: aesdsocket
 aesdsocket: aesdsocket.o
 	@if [ -z "$(CROSS_COMPILE)" ]; \
 	then \
-		$(CC) -o aesdsocket aesdsocket.o -lpthread; \
+		$(CC) -o aesdsocket aesdsocket.o $(CFLAGS) $(LDFLAGS) -lpthread; \
 	else \
-		"$(CROSS_COMPILE)$(CC)" -o aesdsocket aesdsocket.o -lpthread; \
+		"$(CROSS_COMPILE)$(CC)" -o aesdsocket aesdsocket.o $(CFLAGS) $(LDFLAGS) -lpthread; \
 	fi
 
 aesdsocket.o: aesdsocket.c
