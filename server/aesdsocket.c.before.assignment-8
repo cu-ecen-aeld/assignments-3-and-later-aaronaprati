@@ -184,7 +184,6 @@ void *handle_client_connection(void *arg) {
     //while ((bytes_read = fread(buffer, 1, sizeof(buffer), file_ptr)) > 0) {
     while ((bytes_read = fread(file_contents, 1, file_size, file_ptr)) > 0) {
         ssize_t bytes_sent = send(client_sock, file_contents, bytes_read, 0);
-        //printf("Sent %zu bytes to client.\n", bytes_sent);
         if (bytes_sent == -1) {
             perror("send");
             pthread_mutex_unlock(&file_mutex);
@@ -216,7 +215,7 @@ void sigint_handler(int signum) {
     syslog(LOG_INFO, "Caught signal, exiting");
     fclose(file_ptr);
     close(sockfd);
-    //unlink("/var/tmp/aesdsocketdata"); // Delete the file
+    unlink("/var/tmp/aesdsocketdata"); // Delete the file
     closelog();
     exit(EXIT_SUCCESS);
 }
@@ -294,19 +293,18 @@ int main(int argc, char *argv[]) {
     signal(SIGTERM, sigint_handler);
     
        // Receive data and append to file
-    //file_ptr = fopen("/var/tmp/aesdsocketdata", "a+");
-    file_ptr = fopen("/dev/aesdchar", "a+");
+    file_ptr = fopen("/var/tmp/aesdsocketdata", "a+");
     if (file_ptr == NULL) {
         perror("fopen");
         close(client_sock);
         return -1;
     }
-    /*
+    
     pthread_t timer_thread;
     if(pthread_create(&timer_thread, NULL, timer_thread_function, file_ptr)) {
         perror("Timer thread create");
     }
-    */
+    
     while (1) {
         // Accept a connection
         int client_sock = accept(sockfd, (struct sockaddr *)&client_addr, &client_addr_len);
@@ -333,7 +331,7 @@ int main(int argc, char *argv[]) {
         SLIST_INSERT_HEAD(&thread_list, info, entries);
         pthread_mutex_unlock(&thread_list_mutex);
         
-	//cleanup_threads(timer_thread);
+	cleanup_threads(timer_thread);
     }
 
     // The signal handler will handle the cleanup

@@ -21,8 +21,9 @@
 #include "aesdchar.h"
 
 //#define INITIAL_BUFFER_SIZE 1024
-#define INITIAL_BUFFER_SIZE 100000
-
+#define INITIAL_BUFFER_SIZE 1000000
+      //#define BUFFER_SIZE 1000000000
+			
 
 int aesd_major =   0; // use dynamic major
 int aesd_minor =   0;
@@ -89,6 +90,10 @@ ssize_t aesd_read(struct file *filp, char __user *buf, size_t count,
     mutex_lock_interruptible(&aesd_device.lock); // Lock the mutex
 
     PDEBUG("read %zu bytes with offset %lld", count, *f_pos);
+    if (count > 1000)
+    {
+    	PDEBUG("long_string.txt contents %zu bytes with offset %lld", count, *buf);
+    }
 
     // Find the buffer entry corresponding to the current file position
     entry = aesd_circular_buffer_find_entry_offset_for_fpos(
@@ -126,12 +131,42 @@ ssize_t aesd_read(struct file *filp, char __user *buf, size_t count,
     return retval;
 }
 
+loff_t aesd_llseek(struct file *filp, loff_t off, int whence) {
+    loff_t circ_buff_size = 0;
+    loff_t ret_offset = -EINVAL;
+
+    int index;
+    struct aesd_buffer_entry *entry;
+
+    if (mutex_lock_interruptible(&aesd_device.lock)) {
+        return -EINTR;
+    }
+
+    AESD_CIRCULAR_BUFFER_FOREACH(entry, &aesd_device.circular_buffer, index) {
+        if(entry->buffptr) {
+            circ_buff_size += entry->size;
+        }
+    }
+
+    ret_offset = fixed_size_llseek(filp, off, whence, circ_buff_size);
+
+    mutex_unlock(&aesd_device.lock);
+    PDEBUG("llseek cmd=%d, buf size = %lld, offset_in = %lld, offset ret = %lld", 
+        whence,
+        circ_buff_size,
+        off, 
+        ret_offset);
+    return ret_offset;
+}
+
+
 struct file_operations aesd_fops = {
     .owner =    THIS_MODULE,
     .read =     aesd_read,
     .write =    aesd_write,
     .open =     aesd_open,
     .release =  aesd_release,
+     .llseek = aesd_llseek,
 };
 
 
@@ -165,8 +200,11 @@ ssize_t aesd_write(struct file *filp, const char __user *buf, size_t count,
 
     PDEBUG("write %zu bytes with offset %lld", count, *f_pos);
 
+   
+
     // Memory Allocation
     kern_buf = kzalloc(count, GFP_KERNEL); // Removed +1 as we're not relying on null-terminator
+    //kern_buf = kzalloc(20000, GFP_KERNEL); // Removed +1 as we're not relying on null-terminator
     if (!kern_buf) {
         PDEBUG("Failed to allocate kernel buffer");
         retval = -ENOMEM;
@@ -179,6 +217,10 @@ ssize_t aesd_write(struct file *filp, const char __user *buf, size_t count,
         retval = -EFAULT;
         goto out_free;
     }
+
+
+       PDEBUG("kern_buff contents (kernal space): %zu bytes with offset %s", count, kern_buf);
+   
 
     // Checking for the presence of a newline character
     if (kern_buf[count - 1] == '\n') {
