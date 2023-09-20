@@ -10,9 +10,11 @@
 
 #ifdef __KERNEL__
 #include <linux/string.h>
+#include <linux/printk.h>
+
 #else
 #include <string.h>
-#include <stdio.h>
+//#include <stdio.h>
 #endif
 
 #include "aesd-circular-buffer.h"
@@ -47,7 +49,7 @@ struct aesd_buffer_entry *aesd_circular_buffer_find_entry_offset_for_fpos(struct
     while (byte_accumulation <= char_offset && (buffer->full || pointer != buffer->in_offs))
     {
         byte_accumulation += buffer->entry[pointer].size;
-        printf("Pointer: %u, Byte Accumulation: %zu, Char Offset: %zu\n", pointer, byte_accumulation, char_offset);
+        printk(KERN_INFO "Pointer: %u, Byte Accumulation: %zu, Char Offset: %zu\n", pointer, byte_accumulation, char_offset);
         if(byte_accumulation >= char_offset)
         {
             size_t local_offset = buffer->entry[pointer].size - (byte_accumulation - char_offset);

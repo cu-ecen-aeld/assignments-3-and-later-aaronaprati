@@ -1,0 +1,476 @@
+execve("./assignment-autotest/test/assignment8/drivertest.sh", ["./assignment-autotest/test/assig"...], 0x7fffdd943750 /* 49 vars */) = 0
+brk(NULL)                               = 0x55d4016bb000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffee82ea9d0) = -1 EINVAL (Invalid argument)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=74484, ...}) = 0
+mmap(NULL, 74484, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fc851311000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\300A\2\0\0\0\0\0"..., 832) = 832
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+pread64(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32, 848) = 32
+pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\30x\346\264ur\f|Q\226\236i\253-'o"..., 68, 880) = 68
+fstat(3, {st_mode=S_IFREG|0755, st_size=2029592, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fc85130f000
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+pread64(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32, 848) = 32
+pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\30x\346\264ur\f|Q\226\236i\253-'o"..., 68, 880) = 68
+mmap(NULL, 2037344, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fc85111d000
+mmap(0x7fc85113f000, 1540096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x22000) = 0x7fc85113f000
+mmap(0x7fc8512b7000, 319488, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19a000) = 0x7fc8512b7000
+mmap(0x7fc851305000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e7000) = 0x7fc851305000
+mmap(0x7fc85130b000, 13920, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fc85130b000
+close(3)                                = 0
+arch_prctl(ARCH_SET_FS, 0x7fc851310580) = 0
+mprotect(0x7fc851305000, 16384, PROT_READ) = 0
+mprotect(0x55d40015b000, 8192, PROT_READ) = 0
+mprotect(0x7fc851351000, 4096, PROT_READ) = 0
+munmap(0x7fc851311000, 74484)           = 0
+getuid()                                = 1000
+getgid()                                = 1000
+getpid()                                = 5358
+rt_sigaction(SIGCHLD, {sa_handler=0x55d400150c30, sa_mask=~[RTMIN RT_1], sa_flags=SA_RESTORER, sa_restorer=0x7fc851160090}, NULL, 8) = 0
+geteuid()                               = 1000
+brk(NULL)                               = 0x55d4016bb000
+brk(0x55d4016dc000)                     = 0x55d4016dc000
+getppid()                               = 5355
+stat("/home/aaron/Desktop/ECEA-5306-Yocto-class/Assignment-8-Everything/Assignment-3-repo", {st_mode=S_IFDIR|0775, st_size=4096, ...}) = 0
+stat(".", {st_mode=S_IFDIR|0775, st_size=4096, ...}) = 0
+openat(AT_FDCWD, "./assignment-autotest/test/assignment8/drivertest.sh", O_RDONLY) = 3
+fcntl(3, F_DUPFD, 10)                   = 10
+close(3)                                = 0
+fcntl(10, F_SETFD, FD_CLOEXEC)          = 0
+geteuid()                               = 1000
+getegid()                               = 1000
+rt_sigaction(SIGINT, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGINT, {sa_handler=0x55d400150c30, sa_mask=~[RTMIN RT_1], sa_flags=SA_RESTORER, sa_restorer=0x7fc851160090}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGQUIT, {sa_handler=SIG_DFL, sa_mask=~[RTMIN RT_1], sa_flags=SA_RESTORER, sa_restorer=0x7fc851160090}, NULL, 8) = 0
+rt_sigaction(SIGTERM, NULL, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGTERM, {sa_handler=SIG_DFL, sa_mask=~[RTMIN RT_1], sa_flags=SA_RESTORER, sa_restorer=0x7fc851160090}, NULL, 8) = 0
+read(10, "#!/bin/sh\n# Test script used to "..., 8192) = 1967
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write1\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write2\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write3\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write4\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write5\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write6\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write7\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write8\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write9\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write10\n", 8)                = 8
+dup2(11, 1)                             = 1
+close(11)                               = 0
+write(1, "The output below should show wri"..., 50) = 50
+pipe([3, 4])                            = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5360
+close(4)                                = 0
+read(3, "/tmp/tmp.mOstY8Hq9f\n", 128)   = 20
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5360, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 20
+read(3, "", 128)                        = 0
+close(3)                                = 0
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5360
+openat(AT_FDCWD, "/tmp/tmp.mOstY8Hq9f", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+stat("/usr/local/sbin/cat", 0x7ffee82ea660) = -1 ENOENT (No such file or directory)
+stat("/usr/local/bin/cat", 0x7ffee82ea660) = -1 ENOENT (No such file or directory)
+stat("/usr/sbin/cat", 0x7ffee82ea660)   = -1 ENOENT (No such file or directory)
+stat("/usr/bin/cat", {st_mode=S_IFREG|0755, st_size=43416, ...}) = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5361
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5361
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5361, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5361
+dup2(11, 1)                             = 1
+close(11)                               = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5362
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5362
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5362, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5362
+pipe([3, 4])                            = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5363
+close(4)                                = 0
+read(3, "/tmp/tmp.nyfGryEP1B\n", 128)   = 20
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5363, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 20
+read(3, "", 128)                        = 0
+close(3)                                = 0
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5363
+openat(AT_FDCWD, "/tmp/tmp.nyfGryEP1B", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+pipe([3, 4])                            = 0
+write(4, "write1\nwrite2\nwrite3\nwrite4\nwrit"..., 71) = 71
+close(4)                                = 0
+fcntl(0, F_DUPFD, 10)                   = 12
+close(0)                                = 0
+fcntl(12, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 0)                              = 0
+close(3)                                = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5364
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5364
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5364, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5364
+dup2(12, 0)                             = 0
+close(12)                               = 0
+dup2(11, 1)                             = 1
+close(11)                               = 0
+wait4(-1, 0x7ffee82ea31c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+stat("/usr/local/sbin/diff", 0x7ffee82ea400) = -1 ENOENT (No such file or directory)
+stat("/usr/local/bin/diff", 0x7ffee82ea400) = -1 ENOENT (No such file or directory)
+stat("/usr/sbin/diff", 0x7ffee82ea400)  = -1 ENOENT (No such file or directory)
+stat("/usr/bin/diff", {st_mode=S_IFREG|0755, st_size=219480, ...}) = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5365
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 1}], 0, NULL) = 5365
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5365, si_uid=1000, si_status=1, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5365
+wait4(-1, 0x7ffee82ea33c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+write(1, "difference detected, expected:\n", 31) = 31
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5366
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5366
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5366, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5366
+write(1, "but found\n", 10)             = 10
+wait4(-1, 0x7ffee82ea2dc, WNOHANG, NULL) = -1 ECHILD (No child processes)
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5367
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5367
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5367, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5367
+wait4(-1, 0x7ffee82ea31c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write11\n", 8)                = 8
+dup2(11, 1)                             = 1
+close(11)                               = 0
+pipe([3, 4])                            = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5368
+close(4)                                = 0
+read(3, "/tmp/tmp.WYIUBuWBY1\n", 128)   = 20
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5368, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 20
+read(3, "", 128)                        = 0
+close(3)                                = 0
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5368
+openat(AT_FDCWD, "/tmp/tmp.WYIUBuWBY1", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+pipe([3, 4])                            = 0
+write(4, "write2\nwrite3\nwrite4\nwrite5\nwrit"..., 72) = 72
+close(4)                                = 0
+fcntl(0, F_DUPFD, 10)                   = 12
+close(0)                                = 0
+fcntl(12, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 0)                              = 0
+close(3)                                = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5369
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5369
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5369, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5369
+dup2(12, 0)                             = 0
+close(12)                               = 0
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/tmp/tmp.mOstY8Hq9f", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5370
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5370
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5370, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5370
+dup2(11, 1)                             = 1
+close(11)                               = 0
+write(1, "The output should show writes 2-"..., 44) = 44
+wait4(-1, 0x7ffee82ea59c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5371
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5371
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5371, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5371
+wait4(-1, 0x7ffee82ea31c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5372
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 1}], 0, NULL) = 5372
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5372, si_uid=1000, si_status=1, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5372
+wait4(-1, 0x7ffee82ea33c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+write(1, "difference detected, expected:\n", 31) = 31
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5373
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5373
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5373, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5373
+write(1, "but found\n", 10)             = 10
+wait4(-1, 0x7ffee82ea2dc, WNOHANG, NULL) = -1 ECHILD (No child processes)
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5374
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5374
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5374, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5374
+wait4(-1, 0x7ffee82ea31c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "w", 1)                        = 1
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "r", 1)                        = 1
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "it", 2)                       = 2
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "e1\n", 3)                     = 3
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write2\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write3\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write4\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write5\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write6\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write7\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write8\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "write9\n", 7)                 = 7
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "wr", 2)                       = 2
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "it", 2)                       = 2
+dup2(11, 1)                             = 1
+close(11)                               = 0
+openat(AT_FDCWD, "/dev/aesdchar", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+write(1, "e10\n", 4)                    = 4
+dup2(11, 1)                             = 1
+close(11)                               = 0
+write(1, "The output should show writes 1-"..., 86) = 86
+openat(AT_FDCWD, "/tmp/tmp.mOstY8Hq9f", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fcntl(1, F_DUPFD, 10)                   = 11
+close(1)                                = 0
+fcntl(11, F_SETFD, FD_CLOEXEC)          = 0
+dup2(3, 1)                              = 1
+close(3)                                = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5375
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5375
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5375, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5375
+dup2(11, 1)                             = 1
+close(11)                               = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5376
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5376
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5376, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5376
+wait4(-1, 0x7ffee82ea31c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5377
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 1}], 0, NULL) = 5377
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5377, si_uid=1000, si_status=1, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5377
+wait4(-1, 0x7ffee82ea33c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+write(1, "difference detected, expected:\n", 31) = 31
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5378
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5378
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5378, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5378
+write(1, "but found\n", 10)             = 10
+wait4(-1, 0x7ffee82ea2dc, WNOHANG, NULL) = -1 ECHILD (No child processes)
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fc851310850) = 5379
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5379
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=5379, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 5379
+wait4(-1, 0x7ffee82ea31c, WNOHANG, NULL) = -1 ECHILD (No child processes)
+write(2, "./assignment-autotest/test/assig"..., 65) = 65
+write(2, "Illegal number: -1", 18)      = 18
+write(2, "\n", 1)                       = 1
+exit_group(2)                           = ?
++++ exited with 2 +++

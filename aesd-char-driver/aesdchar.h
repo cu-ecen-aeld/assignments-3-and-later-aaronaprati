@@ -33,6 +33,7 @@ struct aesd_dev
     struct aesd_buffer_entry buffer_entry;
     char *temp_buffer;
     struct mutex lock;
+    size_t temp_size;
     struct cdev cdev;     /* Char device structure      */
 };
 
