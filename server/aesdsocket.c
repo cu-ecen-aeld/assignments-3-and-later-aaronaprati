@@ -20,6 +20,14 @@
 
 #define BUFFER_SIZE 1000000
 #define PORT 9000
+
+#ifdef USE_AESD_CHAR_DEVICE
+#define FILE_NAME "/dev/aesdchar"
+#else
+#define FILE_NAME "/var/tmp/aesdsocketdata"
+#endif
+
+
 int sockfd = 0;
 FILE *file_ptr = NULL;
 
@@ -295,7 +303,7 @@ int main(int argc, char *argv[]) {
     
        // Receive data and append to file
     //file_ptr = fopen("/var/tmp/aesdsocketdata", "a+");
-    file_ptr = fopen("/dev/aesdchar", "a+");
+    file_ptr = fopen("FILE_NAME", "a+");
     if (file_ptr == NULL) {
         perror("fopen");
         close(client_sock);
