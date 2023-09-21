@@ -224,7 +224,7 @@ void sigint_handler(int signum) {
     syslog(LOG_INFO, "Caught signal, exiting");
     fclose(file_ptr);
     close(sockfd);
-    //unlink("/var/tmp/aesdsocketdata"); // Delete the file
+    unlink(FILE_NAME); // Delete the file
     closelog();
     exit(EXIT_SUCCESS);
 }
