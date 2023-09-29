@@ -17,6 +17,12 @@
 #include <time.h>
 #include <unistd.h> // For sbrk
 
+#include "aesd_ioctl.h" 
+
+//#define AESD_IOC_MAGIC 0x16
+
+// Define a write command from the user point of view, use command number 1
+//#define AESDCHAR_IOCSEEKTO _IOWR(AESD_IOC_MAGIC, 1, struct aesd_seekto)
 
 #define BUFFER_SIZE 1000000
 #define PORT 9000
@@ -134,6 +140,8 @@ void *timer_thread_function(void *arg) {
 }
 
 void *handle_client_connection(void *arg) {
+
+    bool ioctrl_tracker = false;
     struct ThreadInfo *info = (struct ThreadInfo *)arg;
     int client_sock = info->client_socket;
     struct sockaddr_in client_addr= info->client_thread_addr;
@@ -163,6 +171,9 @@ void *handle_client_connection(void *arg) {
     ssize_t total_received = 0;
     ssize_t bytes_received;
     char *ptr = NULL;
+    unsigned int X = 0;
+    unsigned int Y = 0;
+    int end_of_numbers = 0;
     pthread_mutex_lock(&file_mutex);
     
     while ((bytes_received = recv(client_sock, buffer, BUFFER_SIZE - 1, 0)) > 0) {
@@ -174,7 +185,21 @@ void *handle_client_connection(void *arg) {
             buffer = NULL;
             return NULL;
         }
-
+        char* found = strstr(buffer, "AESDCHAR_IOCSEEKTO:");
+        if (found != NULL) {
+        	ioctrl_tracker = true;
+        // Read the two numbers and also determine the length of the entire substring to remove
+        sscanf(found, "AESDCHAR_IOCSEEKTO:%u,%u%n", &X, &Y, &end_of_numbers);
+        
+        // Adjust the start position to include the preceding newline
+        if (found > buffer && *(found - 1) == '\n') {
+            found--;
+            end_of_numbers++;
+        }
+        
+        // Shift the remaining content of the buffer to overwrite the substring, newline, and the two numbers
+        memmove(found, found + end_of_numbers, strlen(found + end_of_numbers) + 1);
+    }
         ptr = strchr(buffer, '\n');
         if (ptr != NULL) {
             break;
@@ -187,7 +212,27 @@ void *handle_client_connection(void *arg) {
     fseek(file_ptr, 0, SEEK_SET);
     // Allocate memory for the file contents (+1 for null-terminator)
     char* file_contents = (char*)malloc(file_size + 1);
-
+    if (!file_contents) {
+    	perror("malloc");
+    	pthread_mutex_unlock(&file_mutex);
+    	free(buffer);
+    	buffer = NULL;
+    	return NULL;
+    }
+    else{
+    	memset(file_contents, 0, (file_size + 1));
+    }
+    
+    if (ioctrl_tracker == true){
+    syslog(LOG_INFO, "ioctrl_tracker true, X: %u, Y: %u", X, Y);
+    ioctl(fileno(file_ptr), AESDCHAR_IOCSEEKTO, &X, &Y);
+    //fseek(file_ptr, Y, SEEK_SET);
+    }
+    else
+    {
+    	syslog(LOG_INFO, "ioctrl_tracker false, X: %u, Y: %u", X, Y);
+    }
+    
     size_t bytes_read;
     //while ((bytes_read = fread(buffer, 1, sizeof(buffer), file_ptr)) > 0) {
     while ((bytes_read = fread(file_contents, 1, file_size, file_ptr)) > 0) {
@@ -205,6 +250,7 @@ void *handle_client_connection(void *arg) {
     }
     //printf("Buffer :%s \n not in buffer now buffer\n", buffer);
     //printf("Bytes read :%zu \n", bytes_read);
+    
     pthread_mutex_unlock(&file_mutex);
 
     //fclose(file_ptr);
@@ -212,6 +258,7 @@ void *handle_client_connection(void *arg) {
     // Log closed connection to syslog
     syslog(LOG_INFO, "Closed connection from %s", client_ip);
     close(client_sock);
+    memset(buffer, 0, BUFFER_SIZE*sizeof(char));
     free(buffer);
     buffer = NULL;
     free(file_contents);
@@ -303,7 +350,8 @@ int main(int argc, char *argv[]) {
     
        // Receive data and append to file
     //file_ptr = fopen("/var/tmp/aesdsocketdata", "a+");
-    file_ptr = fopen("FILE_NAME", "a+");
+    //file_ptr = fopen("FILE_NAME", "a+");
+    file_ptr = fopen(FILE_NAME, "a+");
     if (file_ptr == NULL) {
         perror("fopen");
         close(client_sock);

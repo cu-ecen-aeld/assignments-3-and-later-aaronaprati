@@ -19,6 +19,7 @@
 #include <linux/slab.h>
 #include <linux/fs.h> // file_operations
 #include "aesdchar.h"
+#include "aesd_ioctl.h"
 
 //#define INITIAL_BUFFER_SIZE 1024
 #define INITIAL_BUFFER_SIZE 1000000
@@ -34,17 +35,15 @@ MODULE_LICENSE("Dual BSD/GPL");
 struct aesd_dev aesd_device;
 
 ssize_t aesd_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos);
+long aesd_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
+
 
 
 int aesd_open(struct inode *inode, struct file *filp)
 {
     struct aesd_dev *dev;
     PDEBUG("open");
-    /**
-     * TODO: handle open
-     */
-     
-     
+
      mutex_lock_interruptible(&aesd_device.lock); // Lock the mutex
 
     // Get the device structure from the inode's private data
@@ -159,6 +158,47 @@ loff_t aesd_llseek(struct file *filp, loff_t off, int whence) {
     return ret_offset;
 }
 
+long aesd_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg) {
+    struct aesd_seekto seek_data;
+    struct aesd_dev *dev = filp->private_data;
+    struct aesd_buffer_entry *entry;
+    loff_t new_f_pos;
+    int index, entry_offset_byte;
+
+    // Check if the command is valid
+    if (_IOC_TYPE(cmd) != AESD_IOC_MAGIC || _IOC_NR(cmd) > AESDCHAR_IOC_MAXNR)
+        return -ENOTTY;
+
+    switch (cmd) {
+        case AESDCHAR_IOCSEEKTO:
+            // Copy the data from user space
+            if (copy_from_user(&seek_data, (struct aesd_seekto *)arg, sizeof(seek_data)))
+                return -EFAULT;
+
+            // Validate the command and offset
+            if (seek_data.write_cmd >= AESDCHAR_MAX_WRITE_OPERATIONS_SUPPORTED ||
+                seek_data.write_cmd_offset >= INITIAL_BUFFER_SIZE)
+                return -EINVAL;
+
+            // Calculate the new file position
+            new_f_pos = 0;
+            for (index = 0; index < seek_data.write_cmd; index++) {
+                entry = &dev->circular_buffer.entry[index];
+                new_f_pos += entry->size;
+            }
+            new_f_pos += seek_data.write_cmd_offset;
+
+            // Update the file position
+            filp->f_pos = new_f_pos;
+            break;
+
+        default:
+            return -ENOTTY;
+    }
+
+    return 0;
+}
+
 
 struct file_operations aesd_fops = {
     .owner =    THIS_MODULE,
@@ -166,6 +206,7 @@ struct file_operations aesd_fops = {
     .write =    aesd_write,
     .open =     aesd_open,
     .release =  aesd_release,
+    .unlocked_ioctl = aesd_unlocked_ioctl,
      .llseek = aesd_llseek,
 };
 
@@ -173,7 +214,6 @@ struct file_operations aesd_fops = {
 static int aesd_setup_cdev(struct aesd_dev *dev)
 {
     int err, devno = MKDEV(aesd_major, aesd_minor);
-
     cdev_init(&dev->cdev, &aesd_fops);
     dev->cdev.owner = THIS_MODULE;
     dev->cdev.ops = &aesd_fops;
@@ -202,7 +242,7 @@ ssize_t aesd_write(struct file *filp, const char __user *buf, size_t count,
 
    
 
-    // Memory Allocation
+    // Memory Allocationaesd_ioctl.h
     kern_buf = kzalloc(count, GFP_KERNEL); // Removed +1 as we're not relying on null-terminator
     //kern_buf = kzalloc(20000, GFP_KERNEL); // Removed +1 as we're not relying on null-terminator
     if (!kern_buf) {
@@ -220,7 +260,7 @@ ssize_t aesd_write(struct file *filp, const char __user *buf, size_t count,
 
 
        PDEBUG("kern_buff contents (kernal space): %zu bytes with offset %s", count, kern_buf);
-   
+
 
     // Checking for the presence of a newline character
     if (kern_buf[count - 1] == '\n') {
