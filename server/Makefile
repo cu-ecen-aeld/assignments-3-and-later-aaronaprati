@@ -17,7 +17,7 @@ all: aesdsocket
 aesdsocket: aesdsocket.o
 	@if [ -z "$(CROSS_COMPILE)" ]; \
 	then \
-		$(CC) -o $(TARGET) $(OBJFILES) $(CFLAGS) $(LDFLAGS); \
+		$(CC) -g -o $(TARGET) $(OBJFILES) $(CFLAGS) $(LDFLAGS); \
 	else \
 		$(CROSS_COMPILE)$(CC) -o $(TARGET) $(OBJFILES) $(CFLAGS) $(LDFLAGS); \
 	fi
@@ -25,7 +25,7 @@ aesdsocket: aesdsocket.o
 aesdsocket.o: aesdsocket.c
 	@if [ -z "$(CROSS_COMPILE)" ]; \
 	then \
-		$(CC) -c $(TARGET).c -o $(OBJFILES); \
+		$(CC) -c $(TARGET).c -g -o $(OBJFILES); \
 	else \
 		$(CROSS_COMPILE)$(CC) -c $(TARGET).c -o $(OBJFILES); \
 	fi

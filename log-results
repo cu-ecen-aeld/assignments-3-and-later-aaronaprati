@@ -1,0 +1,709 @@
+/dev/aesdchar contents:
+swrite1
+swrite2
+swrite3
+swrite4
+swrite5
+swrite6
+swrite7
+swrite8
+swrite9
+swrite10
+dmesg contents:
+[ 9201.413883] aesdchar: release
+[ 9948.149963] aesdchar: open
+[ 9958.025472] aesdchar: Inside of aesd_unlock_ioctl
+[ 9958.025480] aesdchar: seek_data.write_cmd = 272416815
+[ 9958.025481] aesdchar: seek_data.write_cmd_offset = 21976
+[ 9958.025482] aesdchar: Error - Invalid ioctl command type. Expected: 22, Actual: 84
+[ 9958.025488] aesdchar: write 8 bytes with offset 0
+[ 9958.025493] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite1
+[ 9958.025494] aesdchar: Adding to circular buffer: swrite1
+[ 9958.025495] aesdchar: Leaving write function..
+[ 9958.025498] aesdchar: llseek cmd=2, buf size = 8, offset_in = 0, offset ret = 8
+[ 9958.025501] aesdchar: llseek cmd=0, buf size = 8, offset_in = 0, offset ret = 0
+[ 9958.025523] aesdchar: read 4096 bytes with offset 0
+[ 9958.025525] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.025528] aesdchar: Reading from circular buffer: swrite1
+[ 9958.025605] aesdchar: read 4096 bytes with offset 8
+[ 9958.025608] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.025609] aesdchar: No more data to read for offset 8
+[ 9958.062046] aesdchar: write 8 bytes with offset 8
+[ 9958.062054] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite2
+[ 9958.062057] aesdchar: Adding to circular buffer: swrite2
+[ 9958.062059] aesdchar: Leaving write function..
+[ 9958.062248] aesdchar: llseek cmd=2, buf size = 16, offset_in = 0, offset ret = 16
+[ 9958.062256] aesdchar: llseek cmd=0, buf size = 16, offset_in = 0, offset ret = 0
+[ 9958.062290] aesdchar: read 4096 bytes with offset 0
+[ 9958.062293] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.062297] aesdchar: Reading from circular buffer: swrite1
+[ 9958.062301] aesdchar: read 4096 bytes with offset 8
+[ 9958.062302] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.062307] aesdchar: Reading from circular buffer: swrite2
+[ 9958.062398] aesdchar: read 4096 bytes with offset 16
+[ 9958.062402] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.062404] aesdchar: No more data to read for offset 16
+[ 9958.097946] aesdchar: write 8 bytes with offset 16
+[ 9958.097952] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite3
+[ 9958.097956] aesdchar: Adding to circular buffer: swrite3
+[ 9958.097959] aesdchar: Leaving write function..
+[ 9958.097964] aesdchar: llseek cmd=2, buf size = 24, offset_in = 0, offset ret = 24
+[ 9958.097968] aesdchar: llseek cmd=0, buf size = 24, offset_in = 0, offset ret = 0
+[ 9958.098026] aesdchar: read 4096 bytes with offset 0
+[ 9958.098029] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.098033] aesdchar: Reading from circular buffer: swrite1
+[ 9958.098048] aesdchar: read 4096 bytes with offset 8
+[ 9958.098050] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.098055] aesdchar: Reading from circular buffer: swrite2
+[ 9958.098059] aesdchar: read 4096 bytes with offset 16
+[ 9958.098060] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.098073] aesdchar: Reading from circular buffer: swrite3
+[ 9958.098163] aesdchar: read 4096 bytes with offset 24
+[ 9958.098166] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.098168] aesdchar: No more data to read for offset 24
+[ 9958.124125] aesdchar: write 8 bytes with offset 24
+[ 9958.124138] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite4
+[ 9958.124141] aesdchar: Adding to circular buffer: swrite4
+[ 9958.124142] aesdchar: Leaving write function..
+[ 9958.124146] aesdchar: llseek cmd=2, buf size = 32, offset_in = 0, offset ret = 32
+[ 9958.124149] aesdchar: llseek cmd=0, buf size = 32, offset_in = 0, offset ret = 0
+[ 9958.124345] aesdchar: read 4096 bytes with offset 0
+[ 9958.124348] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.124351] aesdchar: Reading from circular buffer: swrite1
+[ 9958.124354] aesdchar: read 4096 bytes with offset 8
+[ 9958.124355] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.124359] aesdchar: Reading from circular buffer: swrite2
+[ 9958.124361] aesdchar: read 4096 bytes with offset 16
+[ 9958.124362] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.124367] aesdchar: Reading from circular buffer: swrite3
+[ 9958.124370] aesdchar: read 4096 bytes with offset 24
+[ 9958.124371] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.124377] aesdchar: Reading from circular buffer: swrite4
+[ 9958.124457] aesdchar: read 4096 bytes with offset 32
+[ 9958.124460] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.124461] aesdchar: No more data to read for offset 32
+[ 9958.152130] aesdchar: write 8 bytes with offset 32
+[ 9958.152136] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite5
+[ 9958.152144] aesdchar: Adding to circular buffer: swrite5
+[ 9958.152146] aesdchar: Leaving write function..
+[ 9958.152150] aesdchar: llseek cmd=2, buf size = 40, offset_in = 0, offset ret = 40
+[ 9958.152154] aesdchar: llseek cmd=0, buf size = 40, offset_in = 0, offset ret = 0
+[ 9958.152171] aesdchar: read 4096 bytes with offset 0
+[ 9958.152172] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.152176] aesdchar: Reading from circular buffer: swrite1
+[ 9958.152178] aesdchar: read 4096 bytes with offset 8
+[ 9958.152179] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.152183] aesdchar: Reading from circular buffer: swrite2
+[ 9958.152185] aesdchar: read 4096 bytes with offset 16
+[ 9958.152186] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.152191] aesdchar: Reading from circular buffer: swrite3
+[ 9958.152195] aesdchar: read 4096 bytes with offset 24
+[ 9958.152196] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.152201] aesdchar: Reading from circular buffer: swrite4
+[ 9958.152204] aesdchar: read 4096 bytes with offset 32
+[ 9958.152204] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.152211] aesdchar: Reading from circular buffer: swrite5
+[ 9958.152262] aesdchar: read 4096 bytes with offset 40
+[ 9958.152264] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.152266] aesdchar: No more data to read for offset 40
+[ 9958.173883] aesdchar: write 8 bytes with offset 40
+[ 9958.173896] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite6
+[ 9958.173899] aesdchar: Adding to circular buffer: swrite6
+[ 9958.173900] aesdchar: Leaving write function..
+[ 9958.173905] aesdchar: llseek cmd=2, buf size = 48, offset_in = 0, offset ret = 48
+[ 9958.173908] aesdchar: llseek cmd=0, buf size = 48, offset_in = 0, offset ret = 0
+[ 9958.173926] aesdchar: read 4096 bytes with offset 0
+[ 9958.173928] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.173931] aesdchar: Reading from circular buffer: swrite1
+[ 9958.173933] aesdchar: read 4096 bytes with offset 8
+[ 9958.173934] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.173938] aesdchar: Reading from circular buffer: swrite2
+[ 9958.173940] aesdchar: read 4096 bytes with offset 16
+[ 9958.173941] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.173946] aesdchar: Reading from circular buffer: swrite3
+[ 9958.173949] aesdchar: read 4096 bytes with offset 24
+[ 9958.173950] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.173956] aesdchar: Reading from circular buffer: swrite4
+[ 9958.173970] aesdchar: read 4096 bytes with offset 32
+[ 9958.173971] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.173978] aesdchar: Reading from circular buffer: swrite5
+[ 9958.173981] aesdchar: read 4096 bytes with offset 40
+[ 9958.173982] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.173996] aesdchar: Reading from circular buffer: swrite6
+[ 9958.174087] aesdchar: read 4096 bytes with offset 48
+[ 9958.174090] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.174091] aesdchar: No more data to read for offset 48
+[ 9958.197161] aesdchar: write 8 bytes with offset 48
+[ 9958.197167] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite7
+[ 9958.197169] aesdchar: Adding to circular buffer: swrite7
+[ 9958.197170] aesdchar: Leaving write function..
+[ 9958.197174] aesdchar: llseek cmd=2, buf size = 56, offset_in = 0, offset ret = 56
+[ 9958.197177] aesdchar: llseek cmd=0, buf size = 56, offset_in = 0, offset ret = 0
+[ 9958.197360] aesdchar: read 4096 bytes with offset 0
+[ 9958.197363] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.197366] aesdchar: Reading from circular buffer: swrite1
+[ 9958.197369] aesdchar: read 4096 bytes with offset 8
+[ 9958.197370] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.197374] aesdchar: Reading from circular buffer: swrite2
+[ 9958.197376] aesdchar: read 4096 bytes with offset 16
+[ 9958.197377] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.197382] aesdchar: Reading from circular buffer: swrite3
+[ 9958.197385] aesdchar: read 4096 bytes with offset 24
+[ 9958.197386] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.197392] aesdchar: Reading from circular buffer: swrite4
+[ 9958.197394] aesdchar: read 4096 bytes with offset 32
+[ 9958.197395] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.197402] aesdchar: Reading from circular buffer: swrite5
+[ 9958.197404] aesdchar: read 4096 bytes with offset 40
+[ 9958.197405] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.197412] aesdchar: Reading from circular buffer: swrite6
+[ 9958.197414] aesdchar: read 4096 bytes with offset 48
+[ 9958.197415] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.197424] aesdchar: Reading from circular buffer: swrite7
+[ 9958.197506] aesdchar: read 4096 bytes with offset 56
+[ 9958.197510] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.197511] aesdchar: No more data to read for offset 56
+[ 9958.220601] aesdchar: write 8 bytes with offset 56
+[ 9958.220614] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite8
+[ 9958.220617] aesdchar: Adding to circular buffer: swrite8
+[ 9958.220618] aesdchar: Leaving write function..
+[ 9958.220623] aesdchar: llseek cmd=2, buf size = 64, offset_in = 0, offset ret = 64
+[ 9958.220626] aesdchar: llseek cmd=0, buf size = 64, offset_in = 0, offset ret = 0
+[ 9958.220643] aesdchar: read 4096 bytes with offset 0
+[ 9958.220644] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.220647] aesdchar: Reading from circular buffer: swrite1
+[ 9958.220649] aesdchar: read 4096 bytes with offset 8
+[ 9958.220650] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.220654] aesdchar: Reading from circular buffer: swrite2
+[ 9958.220656] aesdchar: read 4096 bytes with offset 16
+[ 9958.220657] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.220662] aesdchar: Reading from circular buffer: swrite3
+[ 9958.220665] aesdchar: read 4096 bytes with offset 24
+[ 9958.220666] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.220672] aesdchar: Reading from circular buffer: swrite4
+[ 9958.220674] aesdchar: read 4096 bytes with offset 32
+[ 9958.220675] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.220681] aesdchar: Reading from circular buffer: swrite5
+[ 9958.220683] aesdchar: read 4096 bytes with offset 40
+[ 9958.220684] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.220692] aesdchar: Reading from circular buffer: swrite6
+[ 9958.220694] aesdchar: read 4096 bytes with offset 48
+[ 9958.220695] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.220704] aesdchar: Reading from circular buffer: swrite7
+[ 9958.220705] aesdchar: read 4096 bytes with offset 56
+[ 9958.220706] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.220716] aesdchar: Reading from circular buffer: swrite8
+[ 9958.220784] aesdchar: read 4096 bytes with offset 64
+[ 9958.220793] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.220794] aesdchar: No more data to read for offset 64
+[ 9958.244304] aesdchar: write 8 bytes with offset 64
+[ 9958.244309] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite9
+[ 9958.244315] aesdchar: Adding to circular buffer: swrite9
+[ 9958.244320] aesdchar: Leaving write function..
+[ 9958.244323] aesdchar: llseek cmd=2, buf size = 72, offset_in = 0, offset ret = 72
+[ 9958.244327] aesdchar: llseek cmd=0, buf size = 72, offset_in = 0, offset ret = 0
+[ 9958.244557] aesdchar: read 4096 bytes with offset 0
+[ 9958.244560] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244564] aesdchar: Reading from circular buffer: swrite1
+[ 9958.244566] aesdchar: read 4096 bytes with offset 8
+[ 9958.244568] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244571] aesdchar: Reading from circular buffer: swrite2
+[ 9958.244574] aesdchar: read 4096 bytes with offset 16
+[ 9958.244575] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244580] aesdchar: Reading from circular buffer: swrite3
+[ 9958.244583] aesdchar: read 4096 bytes with offset 24
+[ 9958.244584] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244589] aesdchar: Reading from circular buffer: swrite4
+[ 9958.244591] aesdchar: read 4096 bytes with offset 32
+[ 9958.244592] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244599] aesdchar: Reading from circular buffer: swrite5
+[ 9958.244601] aesdchar: read 4096 bytes with offset 40
+[ 9958.244602] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244610] aesdchar: Reading from circular buffer: swrite6
+[ 9958.244612] aesdchar: read 4096 bytes with offset 48
+[ 9958.244612] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244621] aesdchar: Reading from circular buffer: swrite7
+[ 9958.244623] aesdchar: read 4096 bytes with offset 56
+[ 9958.244624] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244634] aesdchar: Reading from circular buffer: swrite8
+[ 9958.244636] aesdchar: read 4096 bytes with offset 64
+[ 9958.244637] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244661] aesdchar: Reading from circular buffer: swrite9
+[ 9958.244750] aesdchar: read 4096 bytes with offset 72
+[ 9958.244754] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.244755] aesdchar: No more data to read for offset 72
+[ 9958.269741] aesdchar: write 9 bytes with offset 72
+[ 9958.269754] aesdchar: kern_buff contents (kernal space): 9 bytes with offset swrite10
+[ 9958.269756] aesdchar: Adding to circular buffer: swrite10
+[ 9958.269757] aesdchar: Leaving write function..
+[ 9958.269762] aesdchar: llseek cmd=2, buf size = 81, offset_in = 0, offset ret = 81
+[ 9958.269765] aesdchar: llseek cmd=0, buf size = 81, offset_in = 0, offset ret = 0
+[ 9958.269781] aesdchar: read 4096 bytes with offset 0
+[ 9958.269782] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.269786] aesdchar: Reading from circular buffer: swrite1
+[ 9958.269788] aesdchar: read 4096 bytes with offset 8
+[ 9958.269789] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.269793] aesdchar: Reading from circular buffer: swrite2
+[ 9958.269808] aesdchar: read 4096 bytes with offset 16
+[ 9958.269810] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.269814] aesdchar: Reading from circular buffer: swrite3
+[ 9958.269818] aesdchar: read 4096 bytes with offset 24
+[ 9958.269826] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.269832] aesdchar: Reading from circular buffer: swrite4
+[ 9958.269835] aesdchar: read 4096 bytes with offset 32
+[ 9958.269836] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.269849] aesdchar: Reading from circular buffer: swrite5
+[ 9958.269852] aesdchar: read 4096 bytes with offset 40
+[ 9958.269852] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.269860] aesdchar: Reading from circular buffer: swrite6
+[ 9958.269862] aesdchar: read 4096 bytes with offset 48
+[ 9958.269863] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.269921] aesdchar: Reading from circular buffer: swrite7
+[ 9958.269930] aesdchar: read 4096 bytes with offset 56
+[ 9958.269943] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.269998] aesdchar: Reading from circular buffer: swrite8
+[ 9958.270002] aesdchar: read 4096 bytes with offset 64
+[ 9958.270003] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.270113] aesdchar: Reading from circular buffer: swrite9
+[ 9958.270138] aesdchar: read 4096 bytes with offset 72
+[ 9958.270141] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.270261] aesdchar: Reading from circular buffer: swrite10
+[ 9958.270372] aesdchar: read 4096 bytes with offset 81
+[ 9958.270376] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.270377] aesdchar: No more data to read for offset 81
+[ 9958.291728] aesdchar: llseek cmd=2, buf size = 81, offset_in = 0, offset ret = 81
+[ 9958.291734] aesdchar: llseek cmd=0, buf size = 81, offset_in = 0, offset ret = 0
+[ 9958.291765] aesdchar: Inside of aesd_unlock_ioctl
+[ 9958.291769] aesdchar: seek_data.write_cmd = 0
+[ 9958.291770] aesdchar: seek_data.write_cmd_offset = 2
+[ 9958.291781] aesdchar: read 4096 bytes with offset 2
+[ 9958.291782] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291786] aesdchar: Reading from circular buffer: rite1
+[ 9958.291788] aesdchar: read 4096 bytes with offset 8
+[ 9958.291789] aesdchar: long_string.txt contents 4096 bytes with offset 114
+[ 9958.291793] aesdchar: Reading from circular buffer: swrite2
+[ 9958.291796] aesdchar: read 4096 bytes with offset 16
+[ 9958.291797] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291814] aesdchar: Reading from circular buffer: swrite3
+[ 9958.291818] aesdchar: read 4096 bytes with offset 24
+[ 9958.291819] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291825] aesdchar: Reading from circular buffer: swrite4
+[ 9958.291827] aesdchar: read 4096 bytes with offset 32
+[ 9958.291828] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291841] aesdchar: Reading from circular buffer: swrite5
+[ 9958.291844] aesdchar: read 4096 bytes with offset 40
+[ 9958.291845] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291852] aesdchar: Reading from circular buffer: swrite6
+[ 9958.291855] aesdchar: read 4096 bytes with offset 48
+[ 9958.291856] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291864] aesdchar: Reading from circular buffer: swrite7
+[ 9958.291866] aesdchar: read 4096 bytes with offset 56
+[ 9958.291867] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291889] aesdchar: Reading from circular buffer: swrite8
+[ 9958.291892] aesdchar: read 4096 bytes with offset 64
+[ 9958.291893] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291910] aesdchar: Reading from circular buffer: swrite9
+[ 9958.291917] aesdchar: read 4096 bytes with offset 72
+[ 9958.291918] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291930] aesdchar: Reading from circular buffer: swrite10
+[ 9958.291932] aesdchar: read 4096 bytes with offset 81
+[ 9958.291933] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.291934] aesdchar: No more data to read for offset 81
+[ 9958.305569] aesdchar: llseek cmd=2, buf size = 81, offset_in = 0, offset ret = 81
+[ 9958.305576] aesdchar: llseek cmd=0, buf size = 81, offset_in = 0, offset ret = 0
+[ 9958.305609] aesdchar: Inside of aesd_unlock_ioctl
+[ 9958.305613] aesdchar: seek_data.write_cmd = 8
+[ 9958.305613] aesdchar: seek_data.write_cmd_offset = 6
+[ 9958.305625] aesdchar: read 4096 bytes with offset 70
+[ 9958.305627] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.305639] aesdchar: Reading from circular buffer: 9
+[ 9958.305646] aesdchar: read 4096 bytes with offset 72
+[ 9958.305647] aesdchar: long_string.txt contents 4096 bytes with offset 57
+[ 9958.305659] aesdchar: Reading from circular buffer: swrite10
+[ 9958.305662] aesdchar: read 4096 bytes with offset 81
+[ 9958.305663] aesdchar: long_string.txt contents 4096 bytes with offset 115
+[ 9958.305664] aesdchar: No more data to read for offset 81
+[10044.846015] aesdchar: release
+[10048.995621] aesdchar: open
+[10048.995644] aesdchar: read 131072 bytes with offset 0
+[10048.995647] aesdchar: long_string.txt contents 131072 bytes with offset 0
+[10048.995650] aesdchar: Reading from circular buffer: swrite1
+[10048.995669] aesdchar: read 131072 bytes with offset 8
+[10048.995671] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995674] aesdchar: Reading from circular buffer: swrite2
+[10048.995687] aesdchar: read 131072 bytes with offset 16
+[10048.995689] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995693] aesdchar: Reading from circular buffer: swrite3
+[10048.995706] aesdchar: read 131072 bytes with offset 24
+[10048.995708] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995713] aesdchar: Reading from circular buffer: swrite4
+[10048.995725] aesdchar: read 131072 bytes with offset 32
+[10048.995727] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995733] aesdchar: Reading from circular buffer: swrite5
+[10048.995737] aesdchar: read 131072 bytes with offset 40
+[10048.995738] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995745] aesdchar: Reading from circular buffer: swrite6
+[10048.995758] aesdchar: read 131072 bytes with offset 48
+[10048.995759] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995767] aesdchar: Reading from circular buffer: swrite7
+[10048.995771] aesdchar: read 131072 bytes with offset 56
+[10048.995772] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995787] aesdchar: Reading from circular buffer: swrite8
+[10048.995793] aesdchar: read 131072 bytes with offset 64
+[10048.995800] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995810] aesdchar: Reading from circular buffer: swrite9
+[10048.995826] aesdchar: read 131072 bytes with offset 72
+[10048.995827] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995838] aesdchar: Reading from circular buffer: swrite10
+[10048.995842] aesdchar: read 131072 bytes with offset 81
+[10048.995843] aesdchar: long_string.txt contents 131072 bytes with offset 115
+[10048.995844] aesdchar: No more data to read for offset 81
+syslog contents:
+Sep 30 13:51:01 Ubuntu kernel: [ 9201.413883] aesdchar: release
+Sep 30 14:02:37 Ubuntu kernel: [ 9948.149963] aesdchar: open
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025472] aesdchar: Inside of aesd_unlock_ioctl
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025480] aesdchar: seek_data.write_cmd = 272416815
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025481] aesdchar: seek_data.write_cmd_offset = 21976
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025482] aesdchar: Error - Invalid ioctl command type. Expected: 22, Actual: 84
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025488] aesdchar: write 8 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025493] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025494] aesdchar: Adding to circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025495] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025498] aesdchar: llseek cmd=2, buf size = 8, offset_in = 0, offset ret = 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025501] aesdchar: llseek cmd=0, buf size = 8, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025523] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025525] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025528] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025605] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025608] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.025609] aesdchar: No more data to read for offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062046] aesdchar: write 8 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062054] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062057] aesdchar: Adding to circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062059] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062248] aesdchar: llseek cmd=2, buf size = 16, offset_in = 0, offset ret = 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062256] aesdchar: llseek cmd=0, buf size = 16, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062290] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062293] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062297] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062301] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062302] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062307] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062398] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062402] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.062404] aesdchar: No more data to read for offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.097946] aesdchar: write 8 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.097952] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.097956] aesdchar: Adding to circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.097959] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.097964] aesdchar: llseek cmd=2, buf size = 24, offset_in = 0, offset ret = 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.097968] aesdchar: llseek cmd=0, buf size = 24, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098026] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098029] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098033] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098048] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098050] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098055] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098059] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098060] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098073] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098163] aesdchar: read 4096 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098166] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.098168] aesdchar: No more data to read for offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124125] aesdchar: write 8 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124138] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124141] aesdchar: Adding to circular buffer: swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124142] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124146] aesdchar: llseek cmd=2, buf size = 32, offset_in = 0, offset ret = 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124149] aesdchar: llseek cmd=0, buf size = 32, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124345] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124348] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124351] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124354] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124355] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124359] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124361] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124362] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124367] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124370] aesdchar: read 4096 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124371] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124377] aesdchar: Reading from circular buffer: swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124457] aesdchar: read 4096 bytes with offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124460] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.124461] aesdchar: No more data to read for offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152130] aesdchar: write 8 bytes with offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152136] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite5
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152144] aesdchar: Adding to circular buffer: swrite5
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152146] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152150] aesdchar: llseek cmd=2, buf size = 40, offset_in = 0, offset ret = 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152154] aesdchar: llseek cmd=0, buf size = 40, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152171] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152172] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152176] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152178] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152179] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152183] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152185] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152186] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152191] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152195] aesdchar: read 4096 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152196] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152201] aesdchar: Reading from circular buffer: swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152204] aesdchar: read 4096 bytes with offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152204] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152211] aesdchar: Reading from circular buffer: swrite5
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152262] aesdchar: read 4096 bytes with offset 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152264] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.152266] aesdchar: No more data to read for offset 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173883] aesdchar: write 8 bytes with offset 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173896] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite6
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173899] aesdchar: Adding to circular buffer: swrite6
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173900] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173905] aesdchar: llseek cmd=2, buf size = 48, offset_in = 0, offset ret = 48
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173908] aesdchar: llseek cmd=0, buf size = 48, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173926] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173928] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173931] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173933] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173934] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173938] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173940] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173941] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173946] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173949] aesdchar: read 4096 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173950] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173956] aesdchar: Reading from circular buffer: swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173970] aesdchar: read 4096 bytes with offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173971] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173978] aesdchar: Reading from circular buffer: swrite5
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173981] aesdchar: read 4096 bytes with offset 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173982] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.173996] aesdchar: Reading from circular buffer: swrite6
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.174087] aesdchar: read 4096 bytes with offset 48
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.174090] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.174091] aesdchar: No more data to read for offset 48
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197161] aesdchar: write 8 bytes with offset 48
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197167] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite7
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197169] aesdchar: Adding to circular buffer: swrite7
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197170] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197174] aesdchar: llseek cmd=2, buf size = 56, offset_in = 0, offset ret = 56
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197177] aesdchar: llseek cmd=0, buf size = 56, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197360] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197363] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197366] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197369] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197370] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197374] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197376] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197377] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197382] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197385] aesdchar: read 4096 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197386] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197392] aesdchar: Reading from circular buffer: swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197394] aesdchar: read 4096 bytes with offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197395] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197402] aesdchar: Reading from circular buffer: swrite5
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197404] aesdchar: read 4096 bytes with offset 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197405] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197412] aesdchar: Reading from circular buffer: swrite6
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197414] aesdchar: read 4096 bytes with offset 48
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197415] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197424] aesdchar: Reading from circular buffer: swrite7
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197506] aesdchar: read 4096 bytes with offset 56
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197510] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.197511] aesdchar: No more data to read for offset 56
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220601] aesdchar: write 8 bytes with offset 56
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220614] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220617] aesdchar: Adding to circular buffer: swrite8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220618] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220623] aesdchar: llseek cmd=2, buf size = 64, offset_in = 0, offset ret = 64
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220626] aesdchar: llseek cmd=0, buf size = 64, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220643] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220644] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220647] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220649] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220650] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220654] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220656] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220657] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220662] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220665] aesdchar: read 4096 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220666] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220672] aesdchar: Reading from circular buffer: swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220674] aesdchar: read 4096 bytes with offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220675] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220681] aesdchar: Reading from circular buffer: swrite5
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220683] aesdchar: read 4096 bytes with offset 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220684] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220692] aesdchar: Reading from circular buffer: swrite6
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220694] aesdchar: read 4096 bytes with offset 48
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220695] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220704] aesdchar: Reading from circular buffer: swrite7
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220705] aesdchar: read 4096 bytes with offset 56
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220706] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220716] aesdchar: Reading from circular buffer: swrite8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220784] aesdchar: read 4096 bytes with offset 64
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220793] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.220794] aesdchar: No more data to read for offset 64
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244304] aesdchar: write 8 bytes with offset 64
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244309] aesdchar: kern_buff contents (kernal space): 8 bytes with offset swrite9
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244315] aesdchar: Adding to circular buffer: swrite9
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244320] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244323] aesdchar: llseek cmd=2, buf size = 72, offset_in = 0, offset ret = 72
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244327] aesdchar: llseek cmd=0, buf size = 72, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244557] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244560] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244564] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244566] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244568] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244571] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244574] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244575] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244580] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244583] aesdchar: read 4096 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244584] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244589] aesdchar: Reading from circular buffer: swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244591] aesdchar: read 4096 bytes with offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244592] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244599] aesdchar: Reading from circular buffer: swrite5
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244601] aesdchar: read 4096 bytes with offset 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244602] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244610] aesdchar: Reading from circular buffer: swrite6
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244612] aesdchar: read 4096 bytes with offset 48
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244612] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244621] aesdchar: Reading from circular buffer: swrite7
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244623] aesdchar: read 4096 bytes with offset 56
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244624] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244634] aesdchar: Reading from circular buffer: swrite8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244636] aesdchar: read 4096 bytes with offset 64
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244637] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244661] aesdchar: Reading from circular buffer: swrite9
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244750] aesdchar: read 4096 bytes with offset 72
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244754] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.244755] aesdchar: No more data to read for offset 72
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269741] aesdchar: write 9 bytes with offset 72
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269754] aesdchar: kern_buff contents (kernal space): 9 bytes with offset swrite10
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269756] aesdchar: Adding to circular buffer: swrite10
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269757] aesdchar: Leaving write function..
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269762] aesdchar: llseek cmd=2, buf size = 81, offset_in = 0, offset ret = 81
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269765] aesdchar: llseek cmd=0, buf size = 81, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269781] aesdchar: read 4096 bytes with offset 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269782] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269786] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269788] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269789] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269793] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269808] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269810] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269814] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269818] aesdchar: read 4096 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269826] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269832] aesdchar: Reading from circular buffer: swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269835] aesdchar: read 4096 bytes with offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269836] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269849] aesdchar: Reading from circular buffer: swrite5
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269852] aesdchar: read 4096 bytes with offset 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269852] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269860] aesdchar: Reading from circular buffer: swrite6
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269862] aesdchar: read 4096 bytes with offset 48
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269863] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269921] aesdchar: Reading from circular buffer: swrite7
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269930] aesdchar: read 4096 bytes with offset 56
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269943] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.269998] aesdchar: Reading from circular buffer: swrite8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.270002] aesdchar: read 4096 bytes with offset 64
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.270003] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.270113] aesdchar: Reading from circular buffer: swrite9
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.270138] aesdchar: read 4096 bytes with offset 72
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.270141] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.270261] aesdchar: Reading from circular buffer: swrite10
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.270372] aesdchar: read 4096 bytes with offset 81
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.270376] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.270377] aesdchar: No more data to read for offset 81
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291728] aesdchar: llseek cmd=2, buf size = 81, offset_in = 0, offset ret = 81
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291734] aesdchar: llseek cmd=0, buf size = 81, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291765] aesdchar: Inside of aesd_unlock_ioctl
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291769] aesdchar: seek_data.write_cmd = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291770] aesdchar: seek_data.write_cmd_offset = 2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291781] aesdchar: read 4096 bytes with offset 2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291782] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291786] aesdchar: Reading from circular buffer: rite1
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291788] aesdchar: read 4096 bytes with offset 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291789] aesdchar: long_string.txt contents 4096 bytes with offset 114
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291793] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291796] aesdchar: read 4096 bytes with offset 16
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291797] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291814] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291818] aesdchar: read 4096 bytes with offset 24
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291819] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291825] aesdchar: Reading from circular buffer: swrite4
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291827] aesdchar: read 4096 bytes with offset 32
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291828] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291841] aesdchar: Reading from circular buffer: swrite5
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291844] aesdchar: read 4096 bytes with offset 40
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291845] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291852] aesdchar: Reading from circular buffer: swrite6
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291855] aesdchar: read 4096 bytes with offset 48
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291856] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291864] aesdchar: Reading from circular buffer: swrite7
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291866] aesdchar: read 4096 bytes with offset 56
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291867] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291889] aesdchar: Reading from circular buffer: swrite8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291892] aesdchar: read 4096 bytes with offset 64
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291893] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291910] aesdchar: Reading from circular buffer: swrite9
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291917] aesdchar: read 4096 bytes with offset 72
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291918] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291930] aesdchar: Reading from circular buffer: swrite10
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291932] aesdchar: read 4096 bytes with offset 81
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291933] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.291934] aesdchar: No more data to read for offset 81
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305569] aesdchar: llseek cmd=2, buf size = 81, offset_in = 0, offset ret = 81
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305576] aesdchar: llseek cmd=0, buf size = 81, offset_in = 0, offset ret = 0
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305609] aesdchar: Inside of aesd_unlock_ioctl
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305613] aesdchar: seek_data.write_cmd = 8
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305613] aesdchar: seek_data.write_cmd_offset = 6
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305625] aesdchar: read 4096 bytes with offset 70
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305627] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305639] aesdchar: Reading from circular buffer: 9
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305646] aesdchar: read 4096 bytes with offset 72
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305647] aesdchar: long_string.txt contents 4096 bytes with offset 57
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305659] aesdchar: Reading from circular buffer: swrite10
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305662] aesdchar: read 4096 bytes with offset 81
+Sep 30 14:02:37 Ubuntu kernel: [ 9958.305663] aesdchar: long_string.txt contents 4096 bytes with offset 115
+Sep 30 14:04:03 Ubuntu kernel: [ 9958.305664] aesdchar: No more data to read for offset 81
+Sep 30 14:04:08 Ubuntu kernel: [10044.846015] aesdchar: release
+Sep 30 14:04:08 Ubuntu kernel: [10048.995621] aesdchar: open
+Sep 30 14:04:08 Ubuntu kernel: [10048.995644] aesdchar: read 131072 bytes with offset 0
+Sep 30 14:04:08 Ubuntu kernel: [10048.995647] aesdchar: long_string.txt contents 131072 bytes with offset 0
+Sep 30 14:04:08 Ubuntu kernel: [10048.995650] aesdchar: Reading from circular buffer: swrite1
+Sep 30 14:04:08 Ubuntu kernel: [10048.995669] aesdchar: read 131072 bytes with offset 8
+Sep 30 14:04:08 Ubuntu kernel: [10048.995671] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995674] aesdchar: Reading from circular buffer: swrite2
+Sep 30 14:04:08 Ubuntu kernel: [10048.995687] aesdchar: read 131072 bytes with offset 16
+Sep 30 14:04:08 Ubuntu kernel: [10048.995689] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995693] aesdchar: Reading from circular buffer: swrite3
+Sep 30 14:04:08 Ubuntu kernel: [10048.995706] aesdchar: read 131072 bytes with offset 24
+Sep 30 14:04:08 Ubuntu kernel: [10048.995708] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995713] aesdchar: Reading from circular buffer: swrite4
+Sep 30 14:04:08 Ubuntu kernel: [10048.995725] aesdchar: read 131072 bytes with offset 32
+Sep 30 14:04:08 Ubuntu kernel: [10048.995727] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995733] aesdchar: Reading from circular buffer: swrite5
+Sep 30 14:04:08 Ubuntu kernel: [10048.995737] aesdchar: read 131072 bytes with offset 40
+Sep 30 14:04:08 Ubuntu kernel: [10048.995738] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995745] aesdchar: Reading from circular buffer: swrite6
+Sep 30 14:04:08 Ubuntu kernel: [10048.995758] aesdchar: read 131072 bytes with offset 48
+Sep 30 14:04:08 Ubuntu kernel: [10048.995759] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995767] aesdchar: Reading from circular buffer: swrite7
+Sep 30 14:04:08 Ubuntu kernel: [10048.995771] aesdchar: read 131072 bytes with offset 56
+Sep 30 14:04:08 Ubuntu kernel: [10048.995772] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995787] aesdchar: Reading from circular buffer: swrite8
+Sep 30 14:04:08 Ubuntu kernel: [10048.995793] aesdchar: read 131072 bytes with offset 64
+Sep 30 14:04:08 Ubuntu kernel: [10048.995800] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995810] aesdchar: Reading from circular buffer: swrite9
+Sep 30 14:04:08 Ubuntu kernel: [10048.995826] aesdchar: read 131072 bytes with offset 72
+Sep 30 14:04:08 Ubuntu kernel: [10048.995827] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995838] aesdchar: Reading from circular buffer: swrite10
+Sep 30 14:04:08 Ubuntu kernel: [10048.995842] aesdchar: read 131072 bytes with offset 81
+Sep 30 14:04:08 Ubuntu kernel: [10048.995843] aesdchar: long_string.txt contents 131072 bytes with offset 115
+Sep 30 14:04:08 Ubuntu kernel: [10048.995844] aesdchar: No more data to read for offset 81

@@ -16,8 +16,9 @@
 #include <linux/printk.h>
 #include <linux/types.h>
 #include <linux/cdev.h>
-#include <linux/slab.h>
+//#include <linux/slab.h>
 #include <linux/fs.h> // file_operations
+#include <linux/slab.h>
 #include "aesdchar.h"
 #include "aesd_ioctl.h"
 
@@ -43,9 +44,12 @@ int aesd_open(struct inode *inode, struct file *filp)
 {
     struct aesd_dev *dev;
     PDEBUG("open");
-
-     mutex_lock_interruptible(&aesd_device.lock); // Lock the mutex
-
+    int mutex_result = 0;
+    mutex_result = mutex_lock_interruptible(&aesd_device.lock); // Lock the mutex
+    if (mutex_result != 0) {
+    return -EINTR;
+    // Handle the error (e.g., return an error code or perform cleanup)
+    }
     // Get the device structure from the inode's private data
     dev = container_of(inode->i_cdev, struct aesd_dev, cdev);
     filp->private_data = dev; // Store the device structure in the file's private data
@@ -57,10 +61,13 @@ int aesd_open(struct inode *inode, struct file *filp)
 
 int aesd_release(struct inode *inode, struct file *filp)
 {
-    struct aesd_dev *dev = filp->private_data; // Get the device structure
-
-    mutex_lock_interruptible(&aesd_device.lock); // Lock the mutex
-
+    //struct aesd_dev *dev = filp->private_data; // Get the device structure
+    int mutex_result = 0;
+    mutex_result = mutex_lock_interruptible(&aesd_device.lock); // Lock the mutex
+    if (mutex_result != 0) {
+    return -EINTR;
+    // Handle the error (e.g., return an error code or perform cleanup)
+    }
     PDEBUG("release");
     /*
     // Check if there's any temporary buffer that hasn't been written to the circular buffer
@@ -85,10 +92,14 @@ ssize_t aesd_read(struct file *filp, char __user *buf, size_t count,
     size_t bytes_to_read;
     size_t entry_offset_byte;
     struct aesd_buffer_entry *entry;
+    int mutex_result = 0;
+    mutex_result = mutex_lock_interruptible(&aesd_device.lock); // Lock the mutex
+    if (mutex_result != 0) {
+    return -EINTR;
+    // Handle the error (e.g., return an error code or perform cleanup)
+    }
 
-    mutex_lock_interruptible(&aesd_device.lock); // Lock the mutex
-
-    PDEBUG("read %zu bytes with offset %lld", count, *f_pos);
+    PDEBUG("read %zu bytes with offset %lld", count,(long long) *f_pos);
     if (count > 1000)
     {
     	PDEBUG("long_string.txt contents %zu bytes with offset %lld", count, *buf);
@@ -158,29 +169,120 @@ loff_t aesd_llseek(struct file *filp, loff_t off, int whence) {
     return ret_offset;
 }
 
+
+long aesd_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg) {
+    struct aesd_seekto seek_data;
+    struct aesd_dev *dev = filp->private_data;
+    loff_t new_f_pos;
+    
+    PDEBUG("Inside of aesd_unlock_ioctl");
+    printk(KERN_INFO "Inside aesd_unlocked_ioctl");
+    
+    // Copy the data from user space
+    if (copy_from_user(&seek_data, (struct aesd_seekto *)arg, sizeof(seek_data))) {
+        printk(KERN_ERR "Invalid command or offset");
+        return -EFAULT;
+    }
+    printk(KERN_INFO "seek_data.write_cmd = %u", seek_data.write_cmd);
+    printk(KERN_INFO "seek_data.write_cmd_offset = %u", seek_data.write_cmd_offset);
+    PDEBUG("seek_data.write_cmd = %u", seek_data.write_cmd);
+    PDEBUG("seek_data.write_cmd_offset = %u", seek_data.write_cmd_offset);
+
+    // Calculate the new file position
+    int byte_pos = 0;
+    int arr_pos = 0;
+    int pos_count = 0;
+    int arr_end = 0;
+
+    // Check if the command is valid
+    if (_IOC_TYPE(cmd) != AESD_IOC_MAGIC) {
+        PDEBUG("Error - Invalid ioctl command type. Expected: %d, Actual: %d", AESD_IOC_MAGIC, _IOC_TYPE(cmd));
+        printk(KERN_ERR "Error - Invalid ioctl command type. Expected: %d, Actual: %d", AESD_IOC_MAGIC, _IOC_TYPE(cmd));
+        return -ENOTTY;
+    }
+
+    if (_IOC_NR(cmd) > AESDCHAR_IOC_MAXNR) {
+        PDEBUG("Error - Invalid ioctl command number. Maximum allowed: %d, Actual: %d", AESDCHAR_IOC_MAXNR, _IOC_NR(cmd));
+        printk(KERN_ERR "Error - Invalid ioctl command number. Maximum allowed: %d, Actual: %d", AESDCHAR_IOC_MAXNR, _IOC_NR(cmd));
+        return -ENOTTY;
+    }
+
+    switch (cmd) {
+        case AESDCHAR_IOCSEEKTO:
+           /* // Copy the data from user space
+            if (copy_from_user(&seek_data, (struct aesd_seekto *)arg, sizeof(seek_data))) {
+                printk(KERN_ERR "Invalid command or offset");
+                return -EFAULT;
+            }
+	     */
+            // Calculate the new file position
+            //int byte_pos = 0;
+            //int arr_pos = 0;
+            //int pos_count = 0;
+            arr_end = dev->circular_buffer.out_offs + AESDCHAR_MAX_WRITE_OPERATIONS_SUPPORTED;
+            /*
+            for (int i = dev->circular_buffer.out_offs; i < arr_end; i++) {
+                arr_pos = i % AESDCHAR_MAX_WRITE_OPERATIONS_SUPPORTED;
+                if (pos_count == seek_data.write_cmd) break;
+                byte_pos += dev->circular_buffer.entry[arr_pos].size;
+                pos_count++;
+            }
+            */
+            //new_f_pos = byte_pos + seek_data.write_cmd_offset;
+	    new_f_pos = dev->circular_buffer.entry[seek_data.write_cmd].size * seek_data.write_cmd + seek_data.write_cmd_offset;
+            // Update the file position
+            filp->f_pos = new_f_pos;
+            printk(KERN_INFO "New file position set to %lld", (long long) new_f_pos);
+            break;
+        default:
+            printk(KERN_ERR "Invalid command");
+            return -ENOTTY;
+    }
+    cmd = 0;
+    arg = 0;
+    return 0;
+}
+
+
+
+/*
 long aesd_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg) {
     struct aesd_seekto seek_data;
     struct aesd_dev *dev = filp->private_data;
     struct aesd_buffer_entry *entry;
     loff_t new_f_pos;
     int index, entry_offset_byte;
+    PDEBUG("Inside of aesd_unlock_ioctl");
+    printk(KERN_INFO "Inside aesd_unlocked_ioctl"); // Added printk message
 
-    // Check if the command is valid
-    if (_IOC_TYPE(cmd) != AESD_IOC_MAGIC || _IOC_NR(cmd) > AESDCHAR_IOC_MAXNR)
-        return -ENOTTY;
+// Check if the command is valid
+if (_IOC_TYPE(cmd) != AESD_IOC_MAGIC) {
+    PDEBUG("Error - Invalid ioctl command type. Expected: %d, Actual: %d", AESD_IOC_MAGIC, _IOC_TYPE(cmd));
+    printk(KERN_ERR "Error - Invalid ioctl command type. Expected: %d, Actual: %d", AESD_IOC_MAGIC, _IOC_TYPE(cmd));
+    return -ENOTTY;
+}
 
+if (_IOC_NR(cmd) > AESDCHAR_IOC_MAXNR) {
+    PDEBUG("Error - Invalid ioctl command number. Maximum allowed: %d, Actual: %d", AESDCHAR_IOC_MAXNR, _IOC_NR(cmd));
+    printk(KERN_ERR "Error - Invalid ioctl command number. Maximum allowed: %d, Actual: %d", AESDCHAR_IOC_MAXNR, _IOC_NR(cmd));
+    return -ENOTTY;
+}	
     switch (cmd) {
         case AESDCHAR_IOCSEEKTO:
             // Copy the data from user space
-            if (copy_from_user(&seek_data, (struct aesd_seekto *)arg, sizeof(seek_data)))
+            if (copy_from_user(&seek_data, (struct aesd_seekto *)arg, sizeof(seek_data))){
+            	printk(KERN_ERR "Invalid command or offset"); // Added printk message
                 return -EFAULT;
-
+            }
             // Validate the command and offset
             if (seek_data.write_cmd >= AESDCHAR_MAX_WRITE_OPERATIONS_SUPPORTED ||
-                seek_data.write_cmd_offset >= INITIAL_BUFFER_SIZE)
+                seek_data.write_cmd_offset >= INITIAL_BUFFER_SIZE){
+                printk(KERN_ERR "Over Buffer size"); // Added printk message
                 return -EINVAL;
-
+            }
+            
             // Calculate the new file position
+            printk(KERN_INFO, "Calculating new file postion"); // Added printk message
             new_f_pos = 0;
             for (index = 0; index < seek_data.write_cmd; index++) {
                 entry = &dev->circular_buffer.entry[index];
@@ -190,15 +292,16 @@ long aesd_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
             // Update the file position
             filp->f_pos = new_f_pos;
+            printk(KERN_INFO "New file position set to %lld", new_f_pos); // Added printk message
             break;
-
         default:
+            printk(KERN_ERR "Invalid command"); // Added printk message
             return -ENOTTY;
     }
 
     return 0;
 }
-
+*/
 
 struct file_operations aesd_fops = {
     .owner =    THIS_MODULE,
