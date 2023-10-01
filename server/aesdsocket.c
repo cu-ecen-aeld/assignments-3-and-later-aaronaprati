@@ -146,7 +146,13 @@ void *handle_client_connection(void *arg) {
     //socklen_t sin_thread_size_local = info->sin_thread_size;
     char client_ip[INET_ADDRSTRLEN];
     struct aesd_seekto seek_data_from_server;
-    
+    // Receive data and append to file
+    file_ptr = fopen(FILE_NAME, "w+");
+    if (file_ptr == NULL) {
+        perror("fopen");
+        close(client_sock);
+        //return -1;
+    }
     pthread_mutex_lock(&file_mutex);
     char *buffer = (char*)malloc(BUFFER_SIZE * sizeof(char));
     memset(buffer, 0, BUFFER_SIZE*sizeof(char));
@@ -225,64 +231,9 @@ void *handle_client_connection(void *arg) {
     	else{
     		memset(file_contents, 0, sizeof(file_contents));
     	}
-    //}
-/*
-    if (ioctrl_tracker == true){
-    	//uint32_t encoded_value = ((uint32_t)seek_data_from_server.write_cmd << 16) | (uint32_t)seek_data_from_server.write_cmd_offset;
-    	//seek_data_from_server.write_cmd = encoded_value;
-    	//seek_data_from_server.write_cmd_offset = 0;
-    	// Log the encoded seek data
-        syslog(LOG_INFO, "Encoded seek data: write_cmd = %u, write_cmd_offset = %u", seek_data_from_server.write_cmd, seek_data_from_server.write_cmd_offset);
-    	int file_descriptor = fileno(file_ptr);
-	if (file_descriptor == -1) {
-    		// Handle the error, e.g., print to syslog and exit
-    		syslog(LOG_ERR, "Error getting file descriptor: %m");
-    		fclose(file_ptr); // Close the file if it's open
-    		exit(EXIT_FAILURE);
-	}
-	// Get the ioctl command number
-    	unsigned int ioctlCommand = _IOC_NR(AESDCHAR_IOCSEEKTO);
-    	// Get the ioctl command type
-    	unsigned int ioctlType = _IOC_TYPE(AESDCHAR_IOCSEEKTO);
-    	// Log the ioctl command type to syslog
-    	syslog(LOG_INFO, "IOCTL Command Type: %u", ioctlType);
-    	// Log the ioctl command number to syslog
-    	syslog(LOG_INFO, "IOCTL Command Number: %u", ioctlCommand);
-	syslog(LOG_INFO, "ioctl command: %ld", AESDCHAR_IOCSEEKTO);
-	syslog(LOG_INFO, "launching ioctl call..");
-	ioctlCommand = 0;
-	ioctlType = 0;
-    	if(ioctl(file_descriptor, AESDCHAR_IOCSEEKTO, &seek_data_from_server) == -1) {
-    	  //if(ioctl(file_descriptor, AESDCHAR_IOCSEEKTO, &seek_data_from_server) == -1) {
-    		syslog(LOG_ERR, "ioctl exploded");
-    		//syslog(LOG_ERR, "ioctl failed: %s", strerror(errno));
-    		syslog(LOG_ERR, "ioctl failed: %s (errno=%d)", strerror(errno), errno);
-    	}
-	else{
-		long position = ftell(file_ptr);
-		syslog(LOG_INFO, "Current file position after ioctl: %ld", position);
-		syslog(LOG_INFO, "ioctrl_tracker true, write_cmd: %u, write_cmd_offset: %u", seek_data_from_server.write_cmd, seek_data_from_server.write_cmd_offset);
-	}
-	file_descriptor = 0;
-	ioctrl_tracker == false;
-    }
-    else
-    {
-    	syslog(LOG_INFO, "ioctrl_tracker false, write_cmd: %u, write_cmd_offset: %u", seek_data_from_server.write_cmd, seek_data_from_server.write_cmd_offset);
-    }
-*/
-/*
-    fprintf(file_ptr, "%s", buffer);
-    fseek(file_ptr, 0, SEEK_END);
-    long file_size = ftell(file_ptr);
-    fseek(file_ptr, 0, SEEK_SET);
-*/
+
     
         if (ioctrl_tracker == true){
-    	//uint32_t encoded_value = ((uint32_t)seek_data_from_server.write_cmd << 16) | (uint32_t)seek_data_from_server.write_cmd_offset;
-    	//seek_data_from_server.write_cmd = encoded_value;
-    	//seek_data_from_server.write_cmd_offset = 0;
-    	// Log the encoded seek data
         syslog(LOG_INFO, "Encoded seek data: write_cmd = %u, write_cmd_offset = %u", seek_data_from_server.write_cmd, seek_data_from_server.write_cmd_offset);
     	int file_descriptor = fileno(file_ptr);
 	if (file_descriptor == -1) {
@@ -339,7 +290,7 @@ void *handle_client_connection(void *arg) {
     }
     pthread_mutex_unlock(&file_mutex);
 
-    //fclose(file_ptr);
+    fclose(file_ptr);
 
     // Log closed connection to syslog
     syslog(LOG_INFO, "Closed connection from %s", client_ip);
@@ -433,16 +384,15 @@ int main(int argc, char *argv[]) {
     // Set up the signal handler for SIGINT (Ctrl+C) and SIGTERM
     signal(SIGINT, sigint_handler);
     signal(SIGTERM, sigint_handler);
-    
-       // Receive data and append to file
-    //file_ptr = fopen("/var/tmp/aesdsocketdata", "a+");
-    //file_ptr = fopen("FILE_NAME", "a+");
+    /*
+    // Receive data and append to file
     file_ptr = fopen(FILE_NAME, "w+");
     if (file_ptr == NULL) {
         perror("fopen");
         close(client_sock);
         return -1;
     }
+    */
     /*
     pthread_t timer_thread;
     if(pthread_create(&timer_thread, NULL, timer_thread_function, file_ptr)) {
