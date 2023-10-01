@@ -483,7 +483,7 @@ int aesd_init_module(void)
     return result;
 
 }
-
+/*
 void aesd_cleanup_module(void)
 {
     dev_t devno = MKDEV(aesd_major, aesd_minor);
@@ -513,7 +513,37 @@ void aesd_cleanup_module(void)
     // Unregister the character device region
     unregister_chrdev_region(devno, 1);
 }
+*/
+void aesd_cleanup_module(void)
+{
+    dev_t devno = MKDEV(aesd_major, aesd_minor);
+    uint8_t index;
+    struct aesd_buffer_entry *entry;
 
+    // Unregister the character device region
+    unregister_chrdev_region(devno, 1);
+
+    // Delete the cdev structure
+    cdev_del(&aesd_device.cdev);
+
+    // Cleanup AESD specific portions
+    // Free any memory associated with the circular buffer entries
+    AESD_CIRCULAR_BUFFER_FOREACH(entry, &aesd_device.circular_buffer, index) {
+        if (entry->buffptr) {
+            kfree(entry->buffptr); // Free the memory associated with each buffer entry
+            entry->buffptr = NULL; // Reset the pointer
+        }
+    }
+
+    // Optionally, if there's a temporary buffer, free it
+    if (aesd_device.temp_buffer) {
+        kfree(aesd_device.temp_buffer);
+        aesd_device.temp_buffer = NULL; // Reset the pointer
+    }
+
+    // Optionally, destroy any locks or synchronization primitives
+    mutex_destroy(&aesd_device.lock);
+}
 
 
 module_init(aesd_init_module);
